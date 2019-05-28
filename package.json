@@ -1,0 +1,23 @@
+{
+  "name": "letstalk",
+  "version": "1.0.0",
+  "description": "social media site",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zradford/LetsTalk.git"
+  },
+  "author": "Zac Radford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zradford/LetsTalk/issues"
+  },
+  "homepage": "https://github.com/zradford/LetsTalk#readme"
+}
