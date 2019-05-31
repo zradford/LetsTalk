@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/plain"});
     console.log('server received request.')
-    response.end("Hello Azure!");
+    response.end("Hello Katie!");
 });
 
 server.listen(port, err  => {
