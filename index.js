@@ -20,4 +20,6 @@ app.listen(port, err  => {
 });
 
 // basic routes
-app.use('/', 'welcome.html')
+app.use('/', function(req, res) {
+   res.send('welcome.html')
+})
