@@ -1,6 +1,11 @@
 const http = require('http')
 const path = require('path')
 
+var options = {
+  index: 'index.html'
+};
+server.use('/', express.static('/home/site/wwwroot', options));
+
 const express = require('express')
 const app = express()
 
@@ -20,11 +25,10 @@ app.listen(port, err  => {
 });
 
 
-
 // basic routes
 app.get("/", function(req, res) {
    console.log(__dirname)
-   
+
    res
       .status(200)
       .sendFile(path.join(__dirname +'welcome.html'))
