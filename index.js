@@ -1,13 +1,13 @@
 const http = require('http')
 const path = require('path')
+const express = require('express')
+const app = express()
 
 var options = {
   index: 'index.html'
 };
-server.use('/', express.static('/home/site/wwwroot', options));
+app.use('/', express.static('/home/site/wwwroot', options));
 
-const express = require('express')
-const app = express()
 
 
 //static files
