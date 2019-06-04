@@ -23,5 +23,5 @@ app.listen(port, err  => {
 app.get('/', function(req, res) {
    res
       .status(200)
-      .send('welcome.html')
+      .sendFile(path.join(__dirname, 'public', 'welcome.html'))
 })
