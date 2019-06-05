@@ -24,5 +24,5 @@ app.all('/', function(req, res, next){
 
 // basic routes
 app.get("/", function(req, res) {
-   res.render('index', {title: 'Hey', message: 'Hello There!'})
+   res.render('index', {title: 'Hey', message: 'If you see this, txt me an emoji'})
 })
