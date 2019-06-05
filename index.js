@@ -31,5 +31,5 @@ app.get("/", function(req, res) {
 
    res
       .status(200)
-      .sendFile(path.join(__dirname +'welcome.html'))
+      .send('welcome')
 })
