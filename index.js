@@ -1,12 +1,17 @@
 const http = require('http')
 const path = require('path')
 const express = require('express')
+const hbs = require('express-handlebars')
 const app = express()
 const port = process.env.PORT || 3000
 
 
 // I am using handlebars
-app.set('view engine', 'handlebars')
+app.engine('hbs', hbs({extname: 'hbs',
+                       defaultLayout: 'layout',
+                       layoutsDir: __dirname + '/views/layouts'}))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'hbs')
 
 // start app
 app.listen(port)
