@@ -2,34 +2,22 @@ const http = require('http')
 const path = require('path')
 const express = require('express')
 const app = express()
-
-var options = {
-  index: 'index.html'
-};
-app.use('/', express.static('/home/site/wwwroot', options));
-
-
-
-//static files
-app.use('/static', express.static(path.join(__dirname, 'public')))
-
 const port = process.env.PORT || 3000
 
-// start app
-app.listen(port, err  => {
-   if(err){
-      console.log(err);
-   } else {
-      console.log(`Server listening on port ${port}`);
-   }
-});
 
+// I am using handlebars
+app.set('view engine', 'handlebars')
+
+// start app
+app.listen(port)
+
+// generic middleware that tells me what is being accessed
+app.all('/', function(req, res, next){
+   console.log("Requesting: " + req.url)
+   next()
+})
 
 // basic routes
 app.get("/", function(req, res) {
-   console.log(__dirname)
-
-   res
-      .status(200)
-      .send('welcome')
+   res.render('index', {title: 'Hey', message: 'Hello There!'})
 })
