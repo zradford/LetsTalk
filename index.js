@@ -1,3 +1,4 @@
+// code provided by microsoft
 const appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>");
 appInsights.start();
