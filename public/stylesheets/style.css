@@ -2,3 +2,15 @@ body {
    background: #334433;
    color: white;
 }
+
+.parent {
+   display: flex;
+}
+
+.child {
+
+}
+
+@media only screen and (min-width: 700 ) {
+
+}
