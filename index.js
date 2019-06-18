@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // I am using handlebars
 app.engine('hbs', hbs( {
    extname: 'hbs',
-   defaultLayout: 'layout',
+   defaultLayout: 'default',
    layoutsDir: __dirname + '/views/layouts',
    partialsDir: __dirname + '/views/partials'
 }))
