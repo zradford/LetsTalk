@@ -11,6 +11,7 @@ const hbs = require('express-handlebars')
 
 const PORT = process.env.PORT || 3000
 
+app.use(express.static(path.join(__dirname, 'public')))
 
 // I am using handlebars
 app.engine('hbs', hbs({extname: 'hbs',
@@ -31,4 +32,8 @@ app.all('/', (req, res, next) => {
 // basic routes
 app.get("/", (req, res) => {
    res.render('index', {title: 'Hey', message: 'If you see this, txt me an emoji'})
+})
+
+app.get("/index", (req, res) =>{
+   res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
