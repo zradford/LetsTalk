@@ -34,6 +34,6 @@ app.get("/", (req, res) => {
    res.render('index', {title: 'Hey', message: 'If you see this, txt me an emoji'})
 })
 
-app.get("/index", (req, res) =>{
-   res.sendFile(path.join(__dirname,'public', 'index.html'))
+app.get("/home", (req, res) =>{
+   res.sendFile(path.join(__dirname,'public', 'home.html'))
 })
