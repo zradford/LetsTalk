@@ -33,10 +33,6 @@ app.all('/', (req, res, next) => {
 })
 
 // basic routes
-app.get("/", (req, res) => {
-   res.render('index', {title: 'Hey', message: 'If you see this, txt me an emoji'})
-})
-
-app.get("/home", (req, res) =>{
+app.get("/", (req, res) =>{
    res.sendFile(path.join(__dirname,'public', 'home.html'))
 })
