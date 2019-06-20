@@ -19,3 +19,11 @@ a {
    color: black;
    display: inline-block;
 }
+
+ul {
+   text-decoration: none;
+}
+.menu {
+   float: right;
+
+}
