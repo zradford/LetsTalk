@@ -18,11 +18,9 @@ body {
 a {
    color: white;
    display: inline-block;
+   background-color: #223322
 }
 
-ul {
-   text-decoration: none;
-}
 .menu {
    float: right;
 
