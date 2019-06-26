@@ -27,16 +27,21 @@ app.set('view engine', 'hbs')
 app.listen(PORT)
 
 // generic middleware that tells me what is being accessed
-app.all('/', (req, res, next) => {
+app.use((req, res, next) => {
    console.log("Requesting: " + req.url)
    next()
 })
+
 
 // basic routes
 app.get("/", (req, res) =>{
    res.sendFile(path.join(__dirname,'public', 'home.html'))
 })
 
-app.get('login', (req, res) => {
+app.get('/login', (req, res) => {
    res.render('login')
+})
+
+app.get('/signup', (req, res) => {
+   res.render('signup')
 })
