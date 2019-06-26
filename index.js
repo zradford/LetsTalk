@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 
 // basic routes
 app.get("/", (req, res) =>{
-   res.sendFile(path.join(__dirname,'public', 'home.html'))
+   res.render('index')
 })
 
 app.get('/login', (req, res) => {
@@ -45,3 +45,4 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
    res.render('signup')
 })
+
