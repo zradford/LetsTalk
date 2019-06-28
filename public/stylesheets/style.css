@@ -4,13 +4,7 @@ body {
    font-family: Arial, Helvetica, sans-serif;
 }
 
-.parent {
-   display: flex;
-}
 
-.child {
-
-}
 
 @media only screen and (min-width: 700 ) {
 

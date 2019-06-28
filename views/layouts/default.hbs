@@ -12,9 +12,15 @@
       {{/if}}
    </title>
    <link rel="stylesheet" href="stylesheets/style.css">
+   {{#if css}}
+         {{css}}
+   {{/if}}
+
 </head>
 <body>
-   <h1>{{{ body }}}</h1>
+
+   {{{ body }}}
+
 </body>
 </html>
 
