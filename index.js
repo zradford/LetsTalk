@@ -1,8 +1,3 @@
-// code provided by microsoft
-const appInsights = require("applicationinsights");
-appInsights.setup("<instrumentation_key>");
-appInsights.start();
-
 const http = require('http')
 const path = require('path')
 const express = require('express')
