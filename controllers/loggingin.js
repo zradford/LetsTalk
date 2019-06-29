@@ -1,5 +1,5 @@
 // requires for the database stuff will go here
-const db = require('./models/database')
+const db = require('./models/database.js')
 
 /**
  * 
