@@ -59,7 +59,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // res.render('homepage')
 })
 
-app.post('/newuser', urlencodedparser, (req, res) => {
+app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // send info to controller for verification
 
    // set the user as signed in
