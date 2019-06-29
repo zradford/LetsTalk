@@ -7,7 +7,7 @@ const db = require('/models/database')
 function login(err, data) {
    if(err) {console.log(err)}
 
-   database.checkLogin(data.username, data.login)
+   db.checkLogin(data.username, data.login)
 
 }
 
