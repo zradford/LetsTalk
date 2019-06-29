@@ -46,7 +46,7 @@ app.get('/signup', (req, res) => {
    res.render('signup')
 })
 
-app.post('/loggingin', urlencodedparser, (req, res) => {
+app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // send the info from the login form to the database for verification
    //instead of req.body
    let data = {
