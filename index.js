@@ -49,20 +49,21 @@ app.get('/signup', (req, res) => {
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // send the info from the login form to the database for verification
    //instead of req.body
-   let data = {
-      username: "hello",
-      password: "world"
-   }
 
-
-   login.login(NULL, data)
+   login.login(NULL, req.body)
    // res.render('homepage')
 })
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // send info to controller for verification
-
+   register.register(checkInputs(req.body), req.body)
    // set the user as signed in
-
+   
    // render('homepage')
 })
+
+
+
+function checkInputs(body) {
+   console.dir(body)
+}
