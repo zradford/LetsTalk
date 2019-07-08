@@ -6,7 +6,7 @@
  */
 function login(err, data) {
    if(err) {console.log(err)}
-   console.log(data)
+   console.log(data.Username, data.Password)
   // db.checkLogin(data.username, data.login)
 
 }

@@ -51,7 +51,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    //instead of req.body
 
    login.login(NULL, req.body)
-   // res.render('homepage')
+   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css"'})
 })
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
@@ -59,7 +59,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    register.register(checkInputs(req.body), req.body)
    // set the user as signed in
    
-   // render('homepage')
+  res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css"'})
 })
 
 
