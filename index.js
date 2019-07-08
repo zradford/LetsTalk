@@ -57,7 +57,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // send the info from the login form to the database for verification
    //instead of req.body
 
-   login.login(NULL, req.body)
+   login.login(null, req.body)
    res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css"'})
 })
 
