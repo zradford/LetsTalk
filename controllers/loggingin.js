@@ -1,5 +1,5 @@
 // requires for the database stuff will go here
-//const db = require('/models/database')
+const db = require('../models/database')
 
 /**
  * 
@@ -10,7 +10,7 @@ function login(err, data) {
   // db.checkLogin(data.username, data.login)
 
 }
-
+3
 
 module.exports = {
    login : login
