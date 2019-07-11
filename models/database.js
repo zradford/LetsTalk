@@ -17,9 +17,17 @@ client.query('SELECT * FROM user;', (err, res) => {
 });
 
 function checkLogin(username, password){
-   
 }
 
+function register(first, last, email, username, password) {
+   client.query(`INSERT INTO users VALUES(DEFAULT, ${first}, ${last}, ${email}, ${username}, ${password})`,
+   (err, res)=>{
+      if(err) throw err;
+      
+   });
+   client.end()
+}
 module.exports = {
-   checkLogin: checkLogin
+   checkLogin: checkLogin,
+   register: register
 }

@@ -6,6 +6,7 @@ const hbs = require('express-handlebars')
 const app = express()
 const login = require('./controllers/loggingin')
 const register = require('./controllers/register.js')
+const hasher = require('./controllers/hash.js')
 
 const PORT = process.env.PORT || 3000
 
@@ -64,7 +65,15 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // send info to controller for verification
-   register.register(checkInputs(req.body), req.body)
+   let data = {
+      first : req.body.first_name,
+      last : req.body.last_name,
+      email : req.body.email,
+      username : req.body.username,
+      password : req.body.password,
+      password2 : req.body.passwordCheck
+   }
+   if(checkInputs(data)) { register.register(data) } else //tell the user
    // set the user as signed in
    
   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
@@ -72,6 +81,8 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
 
 
 
-function checkInputs(body) {
-   console.dir(body)
+function checkInputs(data) {
+   // make sure everything is safe
+   htmlspecialchars(data.first)
+   // check if passwords are the same
 }

@@ -1,3 +1,7 @@
+li {
+   float: left;
+}
+
 .sidebar {
-   
+   height: 100%;
 }
