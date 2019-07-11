@@ -1,9 +1,22 @@
+<script>
+   function checkPasswords(){
+      let check = document.getElementsByName("password");
+      if(check[0] == check[1]) { 
+         check[1].style.borderColor = "black";
+         document.getElementById('err').innerText = "Great!"
+      }
+      else {
+         check[1].style.borderColor = "red";
+         document.getElementById('err').innerText = "The Passwords must match"
+      }
+   }
+</script>
 <form action="/newUser" method="POST">
    <input type="text" name="first_name" placeholder="First Name"></br>
    <input type="text" name="last_name" placeholder="Last Name"></br>
    <input type="text" name="email" placeholder="Email"></br>
    <input type="text" name="username" placeholder="Username"></br>
    <input type="password" name="password" placeholder="Password"></br>
-   <input type="password" name="passwordCheck" placeholder="Confirm Password"></br>
-   <input type="submit">
+   <input type="password" name="password" placeholder="Confirm Password" onchange="checkPasswords()"><span id="err"></span></br>
+   <input type="submit" >
 </form>

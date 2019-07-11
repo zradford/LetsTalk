@@ -34,6 +34,9 @@ app.use((req, res, next) => {
    next()
 })
 
+app.use((req, res, next)=>{
+   //set the session up
+})
 
 // routes
 app.get("/", (req, res) =>{
@@ -66,23 +69,22 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // send info to controller for verification
    let data = {
-      first : req.body.first_name,
-      last : req.body.last_name,
-      email : req.body.email,
-      username : req.body.username,
-      password : req.body.password,
-      password2 : req.body.passwordCheck
+      first : cleanStr(req.body.first_name),
+      last : cleanStr(req.body.last_name),
+      email : cleanStr(req.body.email),
+      username : cleanStr(req.body.username),
+      password : cleanStr(req.body.password)
    }
-   if(checkInputs(data)) { register.register(data) } else //tell the user
-   // set the user as signed in
-   
-  res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
+   register.register(null, data)
+   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
 })
 
 
-
-function checkInputs(data) {
-   // make sure everything is safe
-   htmlspecialchars(data.first)
-   // check if passwords are the same
+/**
+ * This came from this (specifically user: Johann Echavarria):
+ * https://stackoverflow.com/questions/23187013/is-there-a-better-way-to-sanitize-input-with-javascript
+ */
+function cleanStr(str){
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    return str.trim();
 }

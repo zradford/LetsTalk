@@ -17,13 +17,19 @@ client.query('SELECT * FROM user;', (err, res) => {
 });
 
 function checkLogin(username, password){
+   let query = `SELECT username, password FROM users WHERE username = ${username} AND password = ${password}`
+   client.query(query, (err, res)=>{
+      if(err) throw err;
+      console.dir(res);
+   })
+   client.end();
 }
 
 function register(first, last, email, username, password) {
    client.query(`INSERT INTO users VALUES(DEFAULT, ${first}, ${last}, ${email}, ${username}, ${password})`,
    (err, res)=>{
       if(err) throw err;
-      
+      console.dir(res)
    });
    client.end()
 }
