@@ -51,13 +51,14 @@ app.get('/signup', (req, res) => {
    res.render('signup')
 })
 
-app.get('/loggingin', /*urlencodedparser,*/ (req, res) => {
-   // send the info from the login form to the database for verification
-   //instead of req.body
+// app.get('/loggingin', /*urlencodedparser,*/ (req, res) => {
+//    // send the info from the login form to the database for verification
+//    //instead of req.body
 
-   login.login(null, req.body)
-   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
-})
+//    login.login(null, req.body)
+//    res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
+// })
+
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // send the info from the login form to the database for verification
    //instead of req.body
@@ -75,6 +76,8 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
       username : cleanStr(req.body.username),
       password : cleanStr(req.body.password)
    }
+
+   // I feel like this section will be super slow? would the function call res.render before it is done registering?
    register.register(null, data)
    res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
 })
