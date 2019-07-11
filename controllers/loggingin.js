@@ -8,9 +8,7 @@ function login(err, data) {
    if(err) {console.log(err)}
    console.log(data.Username, data.Password)
   // db.checkLogin(data.username, data.login)
-
 }
-3
 
 module.exports = {
    login : login
