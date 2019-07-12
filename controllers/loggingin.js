@@ -7,8 +7,8 @@ const db = require('../models/database')
  */
 function login(err, data) {
    if(err) {console.log(err)}
-
-   console.log(data.Username, data.Password)
+   console.log("in loggingin.js: login()")
+   console.log("data = " + data.Username, data.Password)
   // db.checkLogin(data.username, data.login)
 }
 

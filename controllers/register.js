@@ -9,6 +9,7 @@ function register(err, data) {
    }
    let hashed = hasher.hasher(data.password)
    hashed.then(console.log("hashed password: ", hashed))
+         .catch(e => console.error(e))
    
    //db.register(data.first, data.last, data.email, data.username,hashed)
 }
