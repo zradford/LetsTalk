@@ -1,5 +1,6 @@
 // requires for the database stuff will go here
 const db = require('../models/database')
+const hasher = require('./controllers/hash.js')
 
 /**
  * 
