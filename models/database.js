@@ -8,14 +8,6 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM user;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
-
 function checkLogin(username, password){
    let query = `SELECT username, password FROM users WHERE username = ${username} AND password = ${password}`
    client.query(query, (err, res)=>{
@@ -31,7 +23,7 @@ function register(first, last, email, username, password) {
       if(err) throw err;
       console.dir(res)
    });
-   client.end()
+   //client.end()
 }
 module.exports = {
    checkLogin: checkLogin,
