@@ -65,8 +65,6 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
 })
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
-   // send info to controller for verification
-   console.dir(req.body.first_name)
    let data = {
       first : cleanStr(req.body.first_name),
       last : cleanStr(req.body.last_name),
@@ -77,7 +75,9 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
 
    // I feel like this section will be super slow? would the function call res.render before it is done registering?
    register.register(null, data)
-   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
+      .then(res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'}))
+      .catch(e => console.log("throwing error: " + e))
+   
 })
 
 
