@@ -76,8 +76,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // I feel like this section will be super slow? would the function call res.render before it is done registering?
    console.log("going to register.js: register()")
    register.register(null, data)
-      .then(res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'}))
-      .catch(e => console.log("throwing error: " + e))
+   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
 })
 
 
