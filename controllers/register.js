@@ -1,5 +1,5 @@
 const db = require('../models/database')
-const hasher = require('./controllers/hash.js')
+const hasher = require('../models/hash')
 
 function register(err, data) {
    if(err) console.log(err)
