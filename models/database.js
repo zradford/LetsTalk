@@ -11,19 +11,18 @@ client.connect();
 function checkLogin(username, password){
    let query = "SELECT username, password FROM users WHERE username = $1 AND password = $2"
    let values = [username, password]
-   client.query(query, values, (err, res)=>{
-      if(err) { console.log(err.stack) } else { console.dir(res.rows) }
-   })
-   client.end();
+   client.query(query, values)
+      .then(res => console.dir(res.rows))
+      .catch(e => console.error(e.stack)) 
+
 }
 
 function register(first, last, email, username, password) {
    let query = "INSERT INTO users VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    let values = [first, last, email, username, password]
-   client.query(query, values, (err, res)=>{
-      if(err) { console.log(err) } else { console.dir(res.rows) }
-   });
-   client.end()
+   client.query(query, values)
+      .then(res => console.dir(res.rows))
+      .catch(e => console.error(e.stack))
 }
 module.exports = {
    checkLogin: checkLogin,
