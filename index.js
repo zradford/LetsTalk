@@ -76,7 +76,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
       last : cleanStr(req.body.last_name),
       email : cleanStr(req.body.email),
       username : cleanStr(req.body.username),
-      password : cleanStr(req.body.password)
+      password : cleanStr(req.body.password[0])
    }
 
    // I feel like this section will be super slow? would the function call res.render before it is done registering?
