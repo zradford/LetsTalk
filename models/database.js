@@ -9,21 +9,19 @@ const client = new Client({
 client.connect();
 
 function checkLogin(username, password){
-   console.log({username, password})
-   let query = `SELECT username, password FROM users WHERE username = ${username} AND password = ${password}`
-   client.query(query, (err, res)=>{
-      if(err) {console.log(err)}
-      console.dir(res);
+   let query = "SELECT username, password FROM users WHERE username = $1 AND password = $2"
+   let values = [username, password]
+   client.query(query, values, (err, res)=>{
+      if(err) { console.log(err.stack) } else { console.dir(res.rows) }
    })
    client.end();
 }
 
 function register(first, last, email, username, password) {
-   console.log({first, last, email, username, password})
-   let query = `INSERT INTO users VALUES(DEFAULT, ${first}, ${last}, ${email}, ${username}, ${password})`;
-   client.query(query, (err, res)=>{
-      if(err) {console.log(err)}
-      console.dir(res)
+   let query = "INSERT INTO users VALUES(DEFAULT, $1, $2, $3, $4, $5)";
+   let values = [first, last, email, username, password]
+   client.query(query, values, (err, res)=>{
+      if(err) { console.log(err) } else { console.dir(res.rows) }
    });
    client.end()
 }
