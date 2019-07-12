@@ -18,7 +18,7 @@ function checkLogin(username, password){
 }
 
 function register(first, last, email, username, password) {
-   let query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5, 1)";
+   let query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    let values = [first, last, email, username, password,]
    client.query(query, values)
       .then(res => console.dir(res.rows))
