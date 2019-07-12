@@ -11,6 +11,7 @@ client.connect();
 
 // take the user's plaintext and compare it with the database's hash
 function checkLogin(username, password){
+   console.log("in database.checklogin()")
    let hashed = hasher.hasher(password);
    let query = "SELECT username, password FROM users WHERE username = $1 AND password = $2"
    let values = [username, hashed]
@@ -21,12 +22,15 @@ function checkLogin(username, password){
 }
 
 function register(first, last, email, username, password) {
+   console.log("in database.register()")
    let query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    let values = [first, last, email, username, password,]
    client.query(query, values)
-      .then(res => console.dir(res.rows))
+      .then(res => console.log("stored: " + res.rows[0] + "in db"))
       .catch(e => console.error(e.stack))
 }
+
+
 module.exports = {
    checkLogin: checkLogin,
    register: register

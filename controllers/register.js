@@ -1,4 +1,3 @@
-const db = require('../models/database')
 const hasher = require('../models/hash')
 
 function register(err, data) {
@@ -7,9 +6,8 @@ function register(err, data) {
       console.log(err) 
       throw err;
    }
-   let hashed = hasher.hasher(data.password)
-   
-   //db.register(data.first, data.last, data.email, data.username,hashed)
+   console.log("going to hash.js for storage")
+   hasher.hasher(data)
 }
 
 module.exports = {
