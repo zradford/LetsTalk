@@ -1,5 +1,6 @@
 //database connection stuff from https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 const { Client } = require('pg');
+const hasher = require('../models/hash')
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -8,9 +9,11 @@ const client = new Client({
 
 client.connect();
 
+// take the user's plaintext and compare it with the database's hash
 function checkLogin(username, password){
+   let hashed = hasher.hasher(password);
    let query = "SELECT username, password FROM users WHERE username = $1 AND password = $2"
-   let values = [username, password]
+   let values = [username, hashed]
    client.query(query, values)
       .then(res => console.dir(res.rows))
       .catch(e => console.error(e.stack)) 
