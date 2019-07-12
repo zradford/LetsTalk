@@ -51,19 +51,16 @@ app.get('/signup', (req, res) => {
    res.render('signup')
 })
 
-// app.get('/loggingin', /*urlencodedparser,*/ (req, res) => {
-//    // send the info from the login form to the database for verification
-//    //instead of req.body
 
-//    login.login(null, req.body)
-//    res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
-// })
 
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
    // send the info from the login form to the database for verification
    //instead of req.body
-
-   login.login(null, req.body)
+   let data = {
+      Username: req.body.Username,
+      Password: req.body.Password
+   }
+   login.login(null, data)
    res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css"'})
 })
 
