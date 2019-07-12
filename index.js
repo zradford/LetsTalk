@@ -70,6 +70,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    // send info to controller for verification
+   console.dir(req.body.first_name)
    let data = {
       first : cleanStr(req.body.first_name),
       last : cleanStr(req.body.last_name),
