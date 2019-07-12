@@ -90,6 +90,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
  * https://stackoverflow.com/questions/23187013/is-there-a-better-way-to-sanitize-input-with-javascript
  */
 function cleanStr(str){
-    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
-    return str.trim();
+   str = "" + str;
+   str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+   return str.trim();
 }
