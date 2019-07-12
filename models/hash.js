@@ -1,5 +1,5 @@
-const db = require('../models/database')
-const bcrypt = require('bcrypt')
+const db = require('../models/database');
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 function hasher(data){
