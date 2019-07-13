@@ -31,7 +31,6 @@ function register(first, last, email, username, password) {
       .catch(e => console.error(e.stack))
 }
 
-
 module.exports = {
    checkLogin: checkLogin,
    register: register
