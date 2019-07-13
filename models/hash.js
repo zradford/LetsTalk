@@ -19,6 +19,7 @@ function checker(plaintext, hash) {
    hash = "" + hash;
    bcrypt.compare(plaintext, hash)
       .then(function(res) {
+         console.log(res)
          return res;
       })
       .catch(e => console.error(e));
