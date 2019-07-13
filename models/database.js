@@ -22,10 +22,10 @@ function checkLogin(username, password){
 
 }
 
-function register(first, last, email, username, password) {
+function register(data) {
    console.log("in database.register()")
    let query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
-   let values = [first, last, email, username, password]
+   let values = [data.first, data.last, data.email, data.username, data.password]
    client.query(query, values)
       .then(res => console.log("stored: " + res.rows[0] + "in db"))
       .catch(e => console.error(e.stack))
