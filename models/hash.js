@@ -4,10 +4,11 @@ const saltRounds = 10;
 
 function hasher(data){
    console.log("in hash.js: hasher()")
+   console.log(data)
    bcrypt.hash(data.password, saltRounds)
       .then(function(hash) {
-         console.log("sending to database.js");
          db.register(data.first, data.last, data.email, data.username, hash);
+         console.log("sending to database.js");
       })
       .catch(e => console.error(e));
 }
