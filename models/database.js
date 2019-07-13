@@ -13,7 +13,7 @@ client.connect()
 function checkLogin(username, password){
    console.log("in database.checklogin()")
    const hashed = hasher.hasher(password);
-   const query = "SELECT username, password FROM users WHERE username = $1 AND password = $2";
+   const query = "SELECT username, hash_pass FROM users WHERE username = $1 AND hash_pass = $2";
    const values = [username, hashed]
    client.query(query, values)
       .then(res => console.dir(res.rows))
