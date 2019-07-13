@@ -22,7 +22,7 @@ function checkLogin(username, password){
 
 }
 
-function register(data) {
+function registerUser(data) {
    console.log("in database.register()")
    let query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    let values = [data.first, data.last, data.email, data.username, data.password]
@@ -33,5 +33,5 @@ function register(data) {
 
 module.exports = {
    checkLogin: checkLogin,
-   register: register
+   registerUser: registerUser
 }

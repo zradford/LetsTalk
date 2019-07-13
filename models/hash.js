@@ -8,8 +8,8 @@ function hasher(data){
    bcrypt.hash(data.password, saltRounds)
       .then(function(hash) {
          data.password = hash;
-         db.register(data);
-         
+         console.log(data)
+         db.registerUser(data);
       })
       .catch(e => console.error(e));
 }
