@@ -9,7 +9,7 @@ function hasher(data){
       .then(function(hash) {
          data.password = hash;
          console.log(db);
-         db.registerUser;
+         console.log(db.registerUser);
       })
       .catch(e => console.error(e));
 }
