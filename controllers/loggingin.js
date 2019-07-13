@@ -9,7 +9,7 @@ function login(err, data) {
    if(err) {console.log(err)}
    console.log("in loggingin.js: login()")
    console.log("data = " + data.username, data.password)
-  // db.checkLogin(data.username, data.login)
+  db.checkLogin(data.username, data.password)
 }
 
 module.exports = {
