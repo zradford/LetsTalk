@@ -7,7 +7,8 @@ const client = new Client({
   ssl: true,
 });
 
-client.connect();
+client.connect()
+   .then(()=> console.log('connected to db'))
 
 // take the user's plaintext and compare it with the database's hash
 function checkLogin(username, password){
