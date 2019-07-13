@@ -15,7 +15,9 @@ function checkLogin(username, password){
    const query = "SELECT hash_pass FROM users WHERE username = $1";
    const values = [username]
    client.query(query, values)
-      .then(res => console.log(hasher.checker(password, res.rows[0])))
+      .then(res => {
+         hasher.checker(password, res.rows[0])
+      })
       .catch(e => console.error(e.stack));
 }
 
