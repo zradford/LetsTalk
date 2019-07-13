@@ -12,11 +12,10 @@ client.connect()
 // take the user's plaintext and compare it with the database's hash
 function checkLogin(username, password){
    console.log("in database.checklogin()")
-   const hashed = hasher.hasher(password);
-   const query = "SELECT username, hash_pass FROM users WHERE username = $1 AND hash_pass = $2";
-   const values = [username, hashed]
+   const query = "SELECT hash_pass FROM users WHERE username = $1";
+   const values = [username]
    client.query(query, values)
-      .then(res => console.dir(res.rows))
+      .then(res => console.dir(hasher.checker(res.rows[0])))
       .catch(e => console.error(e.stack));
 }
 
