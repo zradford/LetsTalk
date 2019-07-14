@@ -3,6 +3,7 @@ const saltRounds = 10;
 
 
 function hasher(plaintext){
+   //I hope this works
    return new Promise((resolve, reject) => {
       console.log("in hash.js: hasher()");
       bcrypt.hash(plaintext, saltRounds)
