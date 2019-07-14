@@ -3,13 +3,16 @@ const saltRounds = 10;
 
 
 function hasher(plaintext){
-   console.log("in hash.js: hasher()");
-   bcrypt.hash(plaintext, saltRounds)
-      .then(function(hash) {
-         return hash;
-      })
-      .catch(e => console.error(e));
+   return new Promise((resolve, reject) => {
+      console.log("in hash.js: hasher()");
+      bcrypt.hash(plaintext, saltRounds)
+         .then(function(hash) {
+            resolve(hash);
+         })
+         .catch(e => reject(e));
+   })
 }
+
 
 function checker(plaintext, hash) {
    plaintext = "" + plaintext;
