@@ -1,15 +1,12 @@
-const db  = require('./database');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
-function hasher(data){
+function hasher(plaintext){
    console.log("in hash.js: hasher()");
-   bcrypt.hash(data.password, saltRounds)
+   bcrypt.hash(plaintext, saltRounds)
       .then(function(hash) {
-         data.password = hash;
-         console.log(db);
-         console.log(db.registerUser);
+         return hash;
       })
       .catch(e => console.error(e));
 }

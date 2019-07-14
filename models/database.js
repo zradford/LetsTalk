@@ -32,5 +32,5 @@ function registerUser(data) {
 
 module.exports = {
    checkLogin : checkLogin,
-   registerUser : function() {return 'hello'}
+   registerUser : registerUser
 };
