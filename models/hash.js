@@ -19,6 +19,7 @@ function checker(plaintext, hash) {
    return new Promise((resolve, reject) => {
       // plaintext = "" + plaintext;
       // hash = "" + hash;
+      console.log(hash)
       bcrypt.compare(plaintext, hash)
          .then(res => resolve(res))
          .catch(e => reject(e));
