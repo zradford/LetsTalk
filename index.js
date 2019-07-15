@@ -6,6 +6,7 @@ const hbs = require('express-handlebars')
 const app = express()
 const login = require('./controllers/loggingin')
 const register = require('./controllers/register.js')
+const passport = require('passport')
 
 const PORT = process.env.PORT || 3000
 

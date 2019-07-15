@@ -16,8 +16,8 @@ function hasher(plaintext){
 
 
 function checker(plaintext, hash) {
-   plaintext = "" + plaintext;
-   hash = "" + hash;
+   // plaintext = "" + plaintext;
+   // hash = "" + hash;
    bcrypt.compare(plaintext, hash)
       .then(function(res) {
          console.log(res)
