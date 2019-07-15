@@ -20,9 +20,7 @@ function checker(plaintext, hash) {
       // plaintext = "" + plaintext;
       // hash = "" + hash;
       bcrypt.compare(plaintext, hash)
-         .then(function(res) {
-            resolve(res);
-         })
+         .then(res => resolve(res))
          .catch(e => reject(e));
       })
 }
