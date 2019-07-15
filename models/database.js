@@ -17,7 +17,6 @@ function checkLogin(username, password){
       const values = [username]
       client.query(query, values)
          .then(res => {
-            console.log(res.rows[0])
             hasher.checker(password, res.rows[0].hash_pass)
                .then(res => resolve(res))
                .catch(e => reject(e))
