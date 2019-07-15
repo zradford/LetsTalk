@@ -16,14 +16,15 @@ function hasher(plaintext){
 
 
 function checker(plaintext, hash) {
-   // plaintext = "" + plaintext;
-   // hash = "" + hash;
-   bcrypt.compare(plaintext, hash)
-      .then(function(res) {
-         console.log(res)
-         return res;
+   return new Promise((resolve, reject) => {
+      // plaintext = "" + plaintext;
+      // hash = "" + hash;
+      bcrypt.compare(plaintext, hash)
+         .then(function(res) {
+            resolve(res);
+         })
+         .catch(e => reject(e));
       })
-      .catch(e => console.error(e));
 }
 
 module.exports = {

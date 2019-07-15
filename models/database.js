@@ -11,14 +11,18 @@ client.connect()
 
 // take the user's plaintext and compare it with the database's hash
 function checkLogin(username, password){
-   console.log("in database.checklogin()")
-   const query = "SELECT hash_pass FROM users WHERE username = $1";
-   const values = [username]
-   client.query(query, values)
-      .then(res => {
-         hasher.checker(password, res.rows[0])
-      })
-      .catch(e => console.error(e.stack));
+   return new Promise((resolve, reject)=> {
+      console.log("in database.checklogin()")
+      const query = "SELECT hash_pass FROM users WHERE username = $1";
+      const values = [username]
+      client.query(query, values)
+         .then(res => {
+            hasher.checker(password, res.rows[0])
+               .then(res => resolve(res))
+               .catch(e => reject(e))
+         })
+         .catch(e => reject(e));
+   })
 }
 
 function registerUser(data) {
