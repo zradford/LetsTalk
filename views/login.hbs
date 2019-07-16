@@ -2,13 +2,9 @@
    <div class="child">
 
       <form action="/loggingin" method="POST">
-         <input type="text" name="username" placeholder="Username"> </br>
+         <input type="text" name="username" placeholder="Username">  {{#if err}} <div class="err"> {{err}} </div>{{/if}}</br>
          <input type="password" name="password" placeholder="Password"> </br>
          <input type="submit">
       </form>
-      {{#if err}}
-         <div class="err"> {{err}} </div>
-      {{/if}}
-      
    </div>
 </div>

@@ -16,8 +16,11 @@ function checker(plaintext, hash) {
    console.log("in hash.checker")
    return new Promise((resolve, reject) => {
       bcrypt.compare(plaintext, hash)
-         .then(res => resolve(res))
-         .catch(e => reject("Incorrect Password, please try again"));
+         .then(res => {
+            console.log("after the hash.compare")
+            resolve(res)
+         })
+         .catch(e => reject({err : "Incorrect Password, please try again"}));
       })
 }
 
