@@ -20,21 +20,17 @@ function checkLogin(username, password){
       client.query(query, values)
          .then(r => {
             console.log("after the query")
-            hasher.checker(password, r.rows[0].hash_pass)
-               .then(r => {
-                  console.log("after the hash")
-                  resolve(r)
-               })
-               .catch(e => { 
-                  console.log("hash failed")
-                  reject(e) 
-               });
+            return hasher.checker(password, r.rows[0].hash_pass)
+         })
+         .then(r => {
+            console.log("after the hash")
+            resolve(r)
          })
          .catch(e => { 
-            console.log("query failed")
+            console.error(e.message)
             reject(e) 
          })
-         .then(() => client.end())
+          .then(() => client.end())
    })
 }
 
