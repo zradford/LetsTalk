@@ -18,12 +18,12 @@ function checkLogin(username, password){
       const query = "SELECT hash_pass FROM users WHERE username = $1";
       const values = [username]
       client.query(query, values)
-         .then(res => {
+         .then(r => {
             console.log("after the query")
-            hasher.checker(password, res.rows[0].hash_pass)
-               .then(res => {
+            hasher.checker(password, r.rows[0].hash_pass)
+               .then(r => {
                   console.log("after the hash")
-                  resolve(res)
+                  resolve(r)
                })
                .catch(e => { 
                   console.log("hash failed")
@@ -33,7 +33,8 @@ function checkLogin(username, password){
          .catch(e => { 
             console.log("query failed")
             reject(e) 
-         });
+         })
+         .then(() => client.end())
    })
 }
 
@@ -42,8 +43,9 @@ function registerUser(data) {
    const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    const values = [data.first, data.last, data.email, data.username, data.password];
    client.query(query, values)
-      .then(res => console.log("stored: " + res.rows[0] + "in db"))
-      .catch(e => console.error(e.stack));
+      .then(r => console.log("stored: " + r.rows[0] + "in db"))
+      .catch(e => console.error(e.stack))
+      .then(() => client.end())
 }
 
 module.exports = {
