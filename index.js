@@ -55,7 +55,7 @@ app.get('/signup', (req, res) => {
 
 
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
-   
+
    if(req.body.username != null && req.body.password != null) {
       let data = {
          username: req.body.username,
@@ -67,8 +67,6 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
          .catch(res.render('login', {err : "Please fill in both fields"}))
 
    } else login.login({err : "Please fill in both fields"})
-   
-
 
 })
 

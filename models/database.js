@@ -30,7 +30,7 @@ function checkLogin(username, password){
             console.error(e.message)
             reject(e) 
          })
-          .then(() => client.end())
+         .finally(() => client.end())
    })
 }
 
