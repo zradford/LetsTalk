@@ -52,6 +52,9 @@ app.get('/signup', (req, res) => {
    res.render('signup')
 })
 
+app.get('/homepage', (req, res) => {
+   res.render('user/homepage')
+})
 
 
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
@@ -63,9 +66,13 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
       }
 
       login.login(null, data)
-         .then(res.render('user/homepage', {css : '<link rel="stylesheet" href="stylesheets/home.css"'}))
-         .catch(res.render('login', {err : "Please fill in both fields"}))
-
+         .then((isValidated) => {
+            if(isValidated){
+               res.redirect('/homepage')
+            } else {
+               res.redirect('/login')
+            }
+         })
    } else login.login({err : "Please fill in both fields"})
 
 })

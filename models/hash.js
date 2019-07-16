@@ -4,24 +4,13 @@ const saltRounds = 10;
 
 function hasher(plaintext){
    console.log("in hash.hasher")
-   return new Promise((resolve, reject) => {
-      bcrypt.hash(plaintext, saltRounds)
-         .then(res => resolve(res))
-         .catch(e => reject(e));
-   })
+   return bcrypt.hash(plaintext, saltRounds)
 }
 
 
 function checker(plaintext, hash) {
    console.log("in hash.checker")
-   return new Promise((resolve, reject) => {
-      bcrypt.compare(plaintext, hash)
-         .then(res => {
-            console.log("after the hash.compare")
-            resolve(res)
-         })
-         .catch(e => reject({err : "Incorrect Password, please try again"}));
-      })
+   return bcrypt.compare(plaintext, hash)
 }
 
 module.exports = {

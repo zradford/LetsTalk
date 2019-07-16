@@ -6,13 +6,9 @@ const db = require('../models/database')
  * sends info to database
  */
 function login(error, data) {
-   return new Promise((resolve, reject) => {
-      if(error) { reject(error) }
-      console.log("in loggingin.js: login()")
-      db.checkLogin(data.username, data.password)
-         .then(res => resolve(res))
-         .catch(e => reject({ err: "Error: " + e }))
-   })
+   // if(error) { reject(error) }
+   console.log("in loggingin.js: login()")
+   return db.checkLogin(data.username, data.password)
 }
 
 module.exports = {
