@@ -7,13 +7,11 @@ const db = require('../models/database')
  */
 function login(error, data) {
    return new Promise((resolve, reject) => {
-      if(error) {reject(error)}
+      if(error) { reject(error) }
       console.log("in loggingin.js: login()")
       db.checkLogin(data.username, data.password)
          .then(res => resolve(res))
-         .catch(e => {
-            return reject({ err: "Error: " + e })
-         })
+         .catch(e => reject({ err: "Error: " + e }))
    })
 }
 

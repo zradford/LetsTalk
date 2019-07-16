@@ -3,6 +3,7 @@ const saltRounds = 10;
 
 
 function hasher(plaintext){
+   console.log("in hash.hasher")
    return new Promise((resolve, reject) => {
       bcrypt.hash(plaintext, saltRounds)
          .then(res => resolve(res))
@@ -12,6 +13,7 @@ function hasher(plaintext){
 
 
 function checker(plaintext, hash) {
+   console.log("in hash.checker")
    return new Promise((resolve, reject) => {
       bcrypt.compare(plaintext, hash)
          .then(res => resolve(res))
