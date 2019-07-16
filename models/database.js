@@ -12,15 +12,17 @@ client.connect()
 // take the user's plaintext and compare it with the database's hash
 // check this out to update this code!! -> https://stackoverflow.com/questions/40776251/handling-postgres-error-message-to-perform-correct-query
 function checkLogin(username, password){
-   return new Promise((resolve, reject)=> {
+   return new Promise((resolve, reject) => {
       console.log("in database.checklogin()")
+      
       const query = "SELECT hash_pass FROM users WHERE username = $1";
       const values = [username]
       client.query(query, values)
          .then(res => {
+            console.log("after the query")
             hasher.checker(password, res.rows[0].hash_pass)
                .then(res => {
-                  console.log(res)
+                  console.log("after the hash")
                   resolve(res)
                })
                .catch(e => reject(e))
