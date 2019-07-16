@@ -18,7 +18,10 @@ function checkLogin(username, password){
       client.query(query, values)
          .then(res => {
             hasher.checker(password, res.rows[0].hash_pass)
-               .then(res => resolve(res))
+               .then(res => {
+                  console.log(res)
+                  resolve(res)
+               })
                .catch(e => reject(e))
          })
          .catch(e => reject(e));
