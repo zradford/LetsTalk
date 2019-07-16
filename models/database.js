@@ -25,9 +25,15 @@ function checkLogin(username, password){
                   console.log("after the hash")
                   resolve(res)
                })
-               .catch(e => reject(e))
+               .catch(e => { 
+                  console.log("hash failed")
+                  reject(e) 
+               });
          })
-         .catch(e => reject(e));
+         .catch(e => { 
+            console.log("query failed")
+            reject(e) 
+         });
    })
 }
 
