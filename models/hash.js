@@ -3,13 +3,9 @@ const saltRounds = 10;
 
 
 function hasher(plaintext){
-   //I hope this works
    return new Promise((resolve, reject) => {
-      console.log("in hash.js: hasher()");
       bcrypt.hash(plaintext, saltRounds)
-         .then(function(hash) {
-            resolve(hash);
-         })
+         .then(res => resolve(res))
          .catch(e => reject(e));
    })
 }
@@ -17,11 +13,9 @@ function hasher(plaintext){
 
 function checker(plaintext, hash) {
    return new Promise((resolve, reject) => {
-      // plaintext = "" + plaintext;
-      // hash = "" + hash;
       bcrypt.compare(plaintext, hash)
          .then(res => resolve(res))
-         .catch(e => reject(e));
+         .catch(e => reject("Incorrect Password, please try again"));
       })
 }
 

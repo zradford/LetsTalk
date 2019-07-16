@@ -55,14 +55,21 @@ app.get('/signup', (req, res) => {
 
 
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
-   // send the info from the login form to the database for verification
-   //instead of req.body
-   let data = {
-      username: req.body.username,
-      password: req.body.password
-   }
-   login.login(null, data)
-   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css"'})
+   
+   if(req.body.username != null && req.body.password != null) {
+      let data = {
+         username: req.body.username,
+         password: req.body.password
+      }
+
+      login.login(null, data)
+         .then(res.render('user/homepage', {css : '<link rel="stylesheet" href="stylesheets/home.css"'}))
+         .catch(res.render('login', {err : "Please fill in both fields"}))
+
+   } else login.login({err : "Please fill in both fields"})
+   
+
+
 })
 
 app.post('/newuser', /*urlencodedparser,*/ (req, res) => {

@@ -6,6 +6,9 @@
          <input type="password" name="password" placeholder="Password"> </br>
          <input type="submit">
       </form>
+      {{#if err}}
+         <div class="err"> {{err}} </div>
+      {{/if}}
       
    </div>
 </div>

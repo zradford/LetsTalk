@@ -10,6 +10,7 @@ const client = new Client({
 client.connect()
 
 // take the user's plaintext and compare it with the database's hash
+// check this out to update this code!! -> https://stackoverflow.com/questions/40776251/handling-postgres-error-message-to-perform-correct-query
 function checkLogin(username, password){
    return new Promise((resolve, reject)=> {
       console.log("in database.checklogin()")
