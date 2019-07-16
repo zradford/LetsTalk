@@ -5,15 +5,15 @@ const db = require('../models/database')
  * receives info from user
  * sends info to database
  */
-function login(data) {
+function login(error, data) {
    return new Promise((resolve, reject) => {
-      if(err) {console.log(err)}
-   console.log("in loggingin.js: login()")
-   db.checkLogin(data.username, data.password)
-      .then(res => console.log("login successful: " + res))
-      .catch(e => {
-         return { err: "Error: " + e }
-      })
+      if(error) {reject(error)}
+      console.log("in loggingin.js: login()")
+      db.checkLogin(data.username, data.password)
+         .then(res => resolve(res))
+         .catch(e => {
+            return reject({ err: "Error: " + e })
+         })
    })
 }
 
