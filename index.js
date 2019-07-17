@@ -2,11 +2,17 @@ const http = require('http')
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session');
 const hbs = require('express-handlebars')
-const app = express()
 const login = require('./controllers/loggingin')
 const register = require('./controllers/register.js')
 const passport = require('passport')
+
+if(process.env.NODE_ENV != "production"){
+   require('./secrets/secrets.js')
+}
+
+const app = express()
 
 const PORT = process.env.PORT || 3000
 
@@ -15,6 +21,24 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+app.user(session({
+   secret: process.env.SESSION_SECRET,
+   resave: false,
+   saveUninitialized: true
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.deserializeUser((id, done) => {
+  return User.findById(id)
+    .then(user => {
+      done(null, user)
+      return null
+    })
+    .catch(err => done(err))
+})
 
 app.engine('hbs', hbs( {
    extname: 'hbs',
@@ -41,7 +65,9 @@ app.use((req, res, next)=>{
 
 // routes
 app.get("/", (req, res) =>{
-   res.render('index')
+   if(req.session.loggedin) {
+      res.render('/homepage')
+   } else { res.render('index')}
 })
 
 app.get('/login', (req, res) => {
@@ -53,7 +79,13 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/homepage', (req, res) => {
+   req.session.loggedin = true;
    res.render('user/homepage')
+})
+
+app.get('/logout', (req,res)=>{
+   req.session.loggedin = false;
+   res.render('index')
 })
 
 
@@ -85,11 +117,9 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
       username : cleanStr(req.body.username),
       password : cleanStr(req.body.password[0])
    }
-
-   // I feel like this section will be super slow? would the function call res.render before it is done registering?
    console.log("going to register.js: register()")
    register.register(null, data)
-   res.render('user/homepage', {css: '<link rel="stylesheet" href="stylesheets/home.css">'})
+   res.redirect('user/homepage');
 })
 
 

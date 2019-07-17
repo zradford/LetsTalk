@@ -14,12 +14,16 @@ client.connect()
 function checkLogin(username, password){
       console.log("in database.checklogin()")
       
-      const query = "SELECT hash_pass FROM users WHERE username = $1";
+      const query = "SELECT hash_pass, user_id FROM users WHERE username = $1";
       const values = [username]
       return client.query(query, values)
          .then(r => {
             console.log("after the query")
             return hasher.checker(password, r.rows[0].hash_pass)
+         })
+         .then(res => {
+            console.log(res)
+            if(res == true) user.login(res.rows[0].user_id)
          })
          .catch(e => { 
             console.error(e.message)
@@ -31,7 +35,7 @@ function registerUser(data) {
    console.log("in database.register()")
    const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    const values = [data.first, data.last, data.email, data.username, data.password];
-   client.query(query, values)
+   return client.query(query, values)
       .then(r => console.log("stored: " + r.rows[0] + "in db"))
       .catch(e => console.error(e.stack))
       .then(() => client.end())
