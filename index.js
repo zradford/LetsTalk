@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.user(session({
+app.use(session({
    secret: process.env.SESSION_SECRET,
    resave: false,
    saveUninitialized: true
