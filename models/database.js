@@ -1,3 +1,4 @@
+const user = require('../controllers/users')
 //database connection stuff from https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 const { Client } = require('pg');
 const hasher = require('../models/hash')
@@ -22,8 +23,7 @@ function checkLogin(username, password){
             return hasher.checker(password, r.rows[0].hash_pass)
          })
          .then(res => {
-            console.log(res)
-            if(res == true) user.login(res.rows[0].user_id)
+            if(res == true) user.login(r.rows[0].user_id)
          })
          .catch(e => { 
             console.error(e.message)

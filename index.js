@@ -80,6 +80,7 @@ app.get('/signup', (req, res) => {
 
 app.get('/homepage', (req, res) => {
    req.session.loggedin = true;
+   console.log(req.session)
    res.render('user/homepage')
 })
 
