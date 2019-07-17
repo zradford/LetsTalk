@@ -1,1 +1,0 @@
-SESSION_SECRET = "never gonna give you up"
