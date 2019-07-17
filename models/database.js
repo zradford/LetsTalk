@@ -22,9 +22,6 @@ function checkLogin(username, password){
             console.log("after the query")
             return hasher.checker(password, r.rows[0].hash_pass)
          })
-         .then(res => {
-            if(res == true) user.login(r.rows[0].user_id)
-         })
          .catch(e => { 
             console.error(e.message)
          })
