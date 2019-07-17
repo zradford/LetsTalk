@@ -1,9 +1,14 @@
+<script>
+   function checkFields(){
+      // make sure there are no special chars in username !!! still needs doing !!!
+      if(document.getElementsByName('Username').values[0].value)   return true;
+   }
+</script>
 <div class="parent">
    <div class="child">
-
-      <form action="/loggingin" method="POST" >
-         <input type="text" name="username" placeholder="Username">  {{#if err}} <span class="err"> {{err}} </span>{{/if}}</br>
-         <input type="password" name="password" placeholder="Password"> </br>
+      <form action="/loggingin" method="POST" onsubmit="return checkFields()">
+         <input type="text" name="username" placeholder="Username" maxlength="250" required><span id="uName_err"></span></br>
+         <input type="password" name="password" placeholder="Password" maxlength="250" required><span id="p_err"></span></br>
          <input type="submit">
       </form>
    </div>

@@ -1,22 +1,46 @@
 <script>
-   function checkPasswords(){
+   function pwordsAreEqual(){
       let check = document.getElementsByName("password");
       if(check[0] == check[1]) { 
-         check[1].style.borderColor = "black";
-         document.getElementById('err').innerText = "Great!"
+         return true
       }
       else {
          check[1].style.borderColor = "red";
          document.getElementById('err').innerText = "The Passwords must match"
+         return false;
       }
    }
+
+   function checkFields(){
+      // email check - will eventually need an activation email!!
+   
+      // username check
+      let uName = document.getElementsByName('username')
+      console.dir(uName)
+      if(uName[0].value.length < 8){
+         uName[0].style.borderColor = 'red';
+         document.getElementById('uName_err').innerText = "Must be longer than 8 characters";
+         return false
+      } else if(!uName[0].value){
+         // does not contain special chars 
+         return false;
+      }
+      // password check
+      if(pwordsAreEqual()){
+         //must contain a special char
+      } else{
+         return false;
+      }
+      return true;
+   }
+
 </script>
-<form action="/newUser" method="POST" >
-   <input type="text" name="first_name" placeholder="First Name"></br>
-   <input type="text" name="last_name" placeholder="Last Name"></br>
-   <input type="text" name="email" placeholder="Email"></br>
-   <input type="text" name="username" placeholder="Username"></br>
-   <input type="password" name="password" placeholder="Password"></br>
-   <input type="password" name="password" placeholder="Confirm Password" onchange="checkPasswords()"><span id="err"></span></br>
+<form name="login" action="/newUser" method="POST" onsubmit="return checkFields()">
+   <input type="text" name="first_name" placeholder="First Name" maxlength="80" required></br>
+   <input type="text" name="last_name" placeholder="Last Name" maxlength="80" required></br>
+   <input type="text" name="email" placeholder="Email" maxlength="250" required><span id="email_err"></span></br>
+   <input type="text" name="username" placeholder="Username" maxlength="250" required><span id="uName_err"></span></br>
+   <input type="password" name="password" placeholder="Password" maxlength="250" required><span id="p_err"></span></br>
+   <input type="password" name="password" placeholder="Confirm Password" maxlength="250" required><span id="err"></span></br>
    <input type="submit" >
 </form>
