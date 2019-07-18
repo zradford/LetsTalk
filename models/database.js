@@ -19,12 +19,16 @@ function checkLogin(username, password){
       const values = [username]
       return client.query(query, values)
          .then(r => {
+            console.log('going to hasher.checker')
             return hasher.checker(password, r.rows[0].hash_pass)
          })
          .catch(e => { 
             console.error(e.message)
          })
-         .finally(() => client.end())
+         .finally(() => {
+            console.log("calling finally in db.checklogin")
+            client.end()
+         })
 }
 
 function registerUser(data) {
@@ -41,10 +45,14 @@ function registerUser(data) {
          })
       })
       .catch(e => console.error(e.stack))
-      .finally(() => client.end())
+      .finally(() => {
+         console.log("calling finally in db.registerUser")
+         client.end()
+      })
 }
 
 function getUserId(id){
+   console.log('in db.getUserId')
    let query = "SELECT * FROM users WHERE user_id = $1";
    let values = [id];
    return client.query(query, values)
@@ -54,6 +62,7 @@ function getUserId(id){
 }
 
 function getUser(username) {
+   console.log('in db.getUser')
    let query = "SELECT * FROM users WHERE username = $1"
    let values = [username];
    return client.query(query, values)

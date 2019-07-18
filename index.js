@@ -44,11 +44,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 passport.serializeUser(function(user, done) {
+   console.log("in serializeUser")
   done(null, user.user_id);
 });
 
 passport.deserializeUser(function(id, done) {
-   database.getUserID(id)
+   console.log('calling database.getUserId')
+   database.getUserId(id)
       .then(user => {
          done(null, user)
       })
@@ -101,6 +103,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
             if(isValidated){
                database.getUserId(data.username)
                   .then(user => {
+                     console.log('running req.login in the /loggingin route')
                      req.login(user, (err) => {
                         if(err) {console.error(err)}
                         res.redirect('/homepage')
@@ -126,6 +129,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
 
    register.register(null, data)
       .then((user) => {
+         console.log('running req.login in the /newuser route')
          req.login(user, (err) => {
             if(err) {console.error(err)}
             res.redirect('/homepage');
