@@ -21,6 +21,19 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.engine('hbs', hbs( {
+   extname: 'hbs',
+   defaultLayout: 'default',
+   layoutsDir: __dirname + '/views/layouts',
+   partialsDir: __dirname + '/views/partials'
+}))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'hbs')
+
+// start app
+app.listen(PORT)
+
+//setting up the session 
 app.use(session({
    secret: 'process.env.SESSION_SECRET',
    resave: false,
@@ -35,29 +48,12 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-//   User.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-// do my own query: select * from users where user_id = id and use done()
-// query will be promise
-database.getUserID(id)
-   .then(user => {
-      done(null, user)
-   })
+   database.getUserID(id)
+      .then(user => {
+         done(null, user)
+      })
 });
 
-
-app.engine('hbs', hbs( {
-   extname: 'hbs',
-   defaultLayout: 'default',
-   layoutsDir: __dirname + '/views/layouts',
-   partialsDir: __dirname + '/views/partials'
-}))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hbs')
-
-// start app
-app.listen(PORT)
 
 // generic middleware that tells me what is being accessed
 app.use((req, res, next) => {
@@ -103,7 +99,13 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
       login.login(null, data)
          .then((isValidated) => {
             if(isValidated){
-               res.redirect('/homepage')
+               database.getUserId(username)
+                  .then(user => {
+                     req.login(user, (err) => {
+                        if(err) {console.error(err)}
+                        res.redirect('/homepage')
+                     })
+                  })
             } else {
                res.redirect('/login')
             }

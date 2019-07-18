@@ -19,7 +19,7 @@ function checkLogin(username, password){
       const values = [username]
       return client.query(query, values)
          .then(r => {
-            console.log("after the query")
+            
             return hasher.checker(password, r.rows[0].hash_pass)
          })
          .catch(e => { 
@@ -54,8 +54,18 @@ function getUserId(id){
       .finally(() => client.end())
 }
 
+function getUser(username) {
+   let query = "SELECT * FROM users WHERE username = $1"
+   let values = [username]
+   return client.query(query, values)
+      .then(res => res.rows[0])
+      .catch(e => console.log("Error: ", e))
+      .finally(() => client.end())
+}
+
 module.exports = {
    checkLogin : checkLogin,
    registerUser : registerUser,
-   getUserId : getUserId
+   getUserId : getUserId,
+   getUser : getUser
 };
