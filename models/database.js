@@ -52,7 +52,6 @@ function registerUser(data) {
 }
 
 function getUserId(id){
-   client.
    console.log('in db.getUserId')
    let query = "SELECT * FROM users WHERE user_id = $1";
    let values = [id];
