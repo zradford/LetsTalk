@@ -33,7 +33,7 @@ function registerUser(data) {
    const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    const values = [data.first, data.last, data.email, data.username, data.password];
    return client.query(query, values)
-      .then(r => console.log("stored: " + r.rows[0] + "in db"))
+      .then(r =>  console.log(r.rows[0]))
       .catch(e => console.error(e.stack))
       .then(() => client.end())
 }

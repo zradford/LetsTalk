@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="stylesheets/home.css">
 <div class="sidebar">
-   <ul>
-      <li>
-         {{#if username}}{{username}}{{/if}} Home
-      </li>
-   </ul>
+         <a> {{#if username}}{{username}}{{/if}} Home</a>
+         <a href="/settings">Settings</a>
+         <a href="/logout">Log Out</a>
 </div>
+<main>
+   {{!-- {{#each topic}}
+   <div></div>
+   {{/each}} --}}
+</main>

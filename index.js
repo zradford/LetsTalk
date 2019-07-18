@@ -7,6 +7,7 @@ const hbs = require('express-handlebars')
 const login = require('./controllers/loggingin')
 const register = require('./controllers/register.js')
 const passport = require('passport')
+const database = require('./models/database')
 
 if(process.env.NODE_ENV != "production"){
    require('./secrets/secrets.js')
@@ -25,20 +26,22 @@ app.use(bodyParser.json())
 app.use(session({
    secret: 'process.env.SESSION_SECRET',
    resave: false,
-   saveUninitialized: true
+   saveUninitialized: true,
 }))
 
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.deserializeUser((id, done) => {
-  return User.findById(id)
-    .then(user => {
-      done(null, user)
-      return null
-    })
-    .catch(err => done(err))
-})
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 
 app.engine('hbs', hbs( {
    extname: 'hbs',
@@ -58,14 +61,9 @@ app.use((req, res, next) => {
    next()
 })
 
-app.use((req, res, next)=>{
-   //set the session up
-   next();
-})
-
 // routes
 app.get("/", (req, res) =>{
-   if(req.session.loggedin) {
+   if(req.user.id) {
       res.render('/homepage')
    } else { res.render('index')}
 })
@@ -79,15 +77,14 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/homepage', (req, res) => {
-   req.session.loggedin = true;
-   console.log(req.session)
-   res.render('user/homepage')
+   database.getUserData(req.user.id)
+   res.render('user/homepage', )
 })
 
-app.get('/logout', (req,res)=>{
-   req.session.loggedin = false;
-   res.render('index')
-})
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 
 app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
@@ -133,3 +130,8 @@ function cleanStr(str){
    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
    return str.trim();
 }
+
+/**
+ * question for dustin:
+ * 1) why not just put req.session.username/password?
+ */

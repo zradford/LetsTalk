@@ -5,3 +5,8 @@ li {
 .sidebar {
    height: 100%;
 }
+.sidebar > a {
+   display: inline-block;
+   height: 10vw;
+   width: 20vw
+}
