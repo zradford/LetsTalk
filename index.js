@@ -32,10 +32,8 @@ app.set('view engine', 'hbs')
 /**
  * Creating some handlebars helpers
  */
-var hbs = exphbs.create({
-   helpers: {
-      myHelper: function() {return "username"}
-   }
+exphbs.registerHelper('myHelper', ()=> {
+   return database.query("SELECT username, region_1 FROM users WHERE user_id = $1", req.user.user_id)
 })
 
 
@@ -92,9 +90,6 @@ app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.username)
    res.render('user/homepage', {
       username : req.user.username,
-      helpers:{
-         myHelper
-      }
    })
 })
 
