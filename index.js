@@ -119,8 +119,8 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    register.register(null, data)
       .then((user) => {
          req.login(user, (err) => {
-            if(err) {return next(err)}
-            res.redirect('/homepage');
+            if(err) {console.error(err)}
+            res.redirect('/homepage', {username: user.username});
          })
       })
 
