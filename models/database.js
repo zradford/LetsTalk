@@ -19,7 +19,6 @@ function checkLogin(username, password){
       const values = [username]
       return client.query(query, values)
          .then(r => {
-            
             return hasher.checker(password, r.rows[0].hash_pass)
          })
          .catch(e => { 
@@ -50,16 +49,16 @@ function getUserId(id){
    let values = [id];
    return client.query(query, values)
       .then(res => res.rows[0])
-      .catch(e => console.log("Error: ", e))
+      .catch(e => console.error(e.stack))
       .finally(() => client.end())
 }
 
 function getUser(username) {
    let query = "SELECT * FROM users WHERE username = $1"
-   let values = [username]
+   let values = [username];
    return client.query(query, values)
       .then(res => res.rows[0])
-      .catch(e => console.log("Error: ", e))
+      .catch(e => console.error(e.stack))
       .finally(() => client.end())
 }
 
