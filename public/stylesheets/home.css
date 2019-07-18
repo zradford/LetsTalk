@@ -7,8 +7,11 @@ li {
 }
 .sidebar > a {
    display: block;
+   
    height: 5vw;
    width: 10vw;
+   margin:.5vw;
+
    text-decoration: none;
    text-align: center;
 }

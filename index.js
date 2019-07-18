@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const session = require('express-session');
-const hbs = require('express-handlebars')
+const exphbs = require('express-handlebars')
 const login = require('./controllers/loggingin')
 const register = require('./controllers/register.js')
 const passport = require('passport')
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.engine('hbs', hbs( {
+app.engine('hbs', exphbs( {
    extname: 'hbs',
    defaultLayout: 'default',
    layoutsDir: __dirname + '/views/layouts',
@@ -80,7 +80,7 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/homepage', (req, res) => {
-   //database.getUserData(req.user.id)
+   //database.getUserData(req.user.username)
    res.render('user/homepage', {username : req.user.username})
 })
 
@@ -150,6 +150,6 @@ function cleanStr(str){
 }
 
 /**
- * question for dustin:
- * 1) why not just put req.session.username/password?
+ * Creating some handlebars helpers
  */
+

@@ -71,9 +71,15 @@ function getUser(username) {
       // .finally(() => client.end())
 }
 
+function getUserData(user_id) {
+   console.log('in db.getUserData')
+   let query =""
+}
+
 module.exports = {
    checkLogin : checkLogin,
    registerUser : registerUser,
    getUserId : getUserId,
-   getUser : getUser
+   getUser : getUser,
+   getUserData : getUserData
 };
