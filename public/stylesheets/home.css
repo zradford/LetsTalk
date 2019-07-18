@@ -8,5 +8,6 @@ li {
 .sidebar > a {
    display: inline-block;
    height: 10vw;
-   width: 20vw
+   width: 20vw;
+   text-decoration: none;
 }

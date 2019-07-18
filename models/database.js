@@ -30,7 +30,7 @@ function checkLogin(username, password){
 
 function registerUser(data) {
    console.log("in database.registerUSER()")
-   const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
+   const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5) RETURNING *";
    const values = [data.first, data.last, data.email, data.username, data.password];
    return client.query(query, values)
       .then(r => { 
