@@ -25,10 +25,10 @@ function checkLogin(username, password){
          .catch(e => { 
             console.error(e.message)
          })
-         .finally(() => {
-            console.log("calling finally in db.checklogin")
-            client.end()
-         })
+         // .finally(() => {
+         //    console.log("calling finally in db.checklogin")
+         //    client.end()
+         // })
 }
 
 function registerUser(data) {
@@ -45,20 +45,21 @@ function registerUser(data) {
          })
       })
       .catch(e => console.error(e.stack))
-      .finally(() => {
-         console.log("calling finally in db.registerUser")
-         client.end()
-      })
+      // .finally(() => {
+      //    console.log("calling finally in db.registerUser")
+      //    client.end()
+      // })
 }
 
 function getUserId(id){
+   client.
    console.log('in db.getUserId')
    let query = "SELECT * FROM users WHERE user_id = $1";
    let values = [id];
    return client.query(query, values)
       .then(res => res.rows[0])
       .catch(e => console.error(e.stack))
-      .finally(() => client.end())
+      // .finally(() => client.end())
 }
 
 function getUser(username) {
@@ -68,7 +69,7 @@ function getUser(username) {
    return client.query(query, values)
       .then(res => res.rows[0])
       .catch(e => console.error(e.stack))
-      .finally(() => client.end())
+      // .finally(() => client.end())
 }
 
 module.exports = {
