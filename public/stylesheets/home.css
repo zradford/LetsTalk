@@ -11,7 +11,8 @@ li {
    height: 5vw;
    width: 10vw;
    margin:.5vw;
-
+   padding: 5px;
+   
    text-decoration: none;
    text-align: center;
 }
