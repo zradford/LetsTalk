@@ -9,9 +9,7 @@ const register = require('./controllers/register.js')
 const passport = require('passport')
 const database = require('./models/database')
 
-if(process.env.NODE_ENV != "production"){
-   require('./secrets/secrets.js')
-}
+
 
 const app = express()
 
