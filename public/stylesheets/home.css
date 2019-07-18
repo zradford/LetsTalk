@@ -6,14 +6,20 @@ li {
    height: 100%;
 }
 .sidebar > a {
+   color: white;
    display: block;
    
    height: 5vw;
    width: 10vw;
    margin:.5vw;
    padding: 5px;
-   
+
    text-decoration: none;
    text-align: center;
+}
+
+.sidebar > a:hover {
+   color: black;
+   background-color: lightslategrey;
 }
 
