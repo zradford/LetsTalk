@@ -13,6 +13,7 @@ li {
    width: 10vw;
    margin:.5vw;
    padding: 5px;
+   position: fixed;
 
    text-decoration: none;
    text-align: center;
@@ -20,6 +21,6 @@ li {
 
 .sidebar > a:hover {
    color: black;
-   background-color: lightslategrey;
+   background-color: #4b5e4b;
 }
 
