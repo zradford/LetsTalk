@@ -83,7 +83,7 @@ app.get('/signup', (req, res) => {
 
 app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.id)
-   res.render('user/homepage')
+   res.render('user/homepage', {username : req.user.username})
 })
 
 app.get('/logout', function(req, res){
