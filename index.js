@@ -78,7 +78,7 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/homepage', (req, res) => {
-   database.getUserData(req.user.id)
+   //database.getUserData(req.user.id)
    res.render('user/homepage', )
 })
 
@@ -119,7 +119,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    console.log("going to register.js: register()")
 
    register.register(null, data)
-   res.redirect('user/homepage');
+   res.redirect('/homepage');
 })
 
 
