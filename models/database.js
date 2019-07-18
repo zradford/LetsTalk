@@ -45,7 +45,17 @@ function registerUser(data) {
       .finally(() => client.end())
 }
 
+function getUserId(id){
+   let query = "SELECT * FROM users WHERE user_id = $1";
+   let values = [id];
+   return client.query(query, values)
+      .then(res => res.rows[0])
+      .catch(e => console.log("Error: ", e))
+      .finally(() => client.end())
+}
+
 module.exports = {
    checkLogin : checkLogin,
-   registerUser : registerUser
+   registerUser : registerUser,
+   getUserId : getUserId
 };

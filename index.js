@@ -38,7 +38,12 @@ passport.deserializeUser(function(id, done) {
 //   User.findById(id, function(err, user) {
 //     done(err, user);
 //   });
-// do my own query: select * from users where user_id = id
+// do my own query: select * from users where user_id = id and use done()
+// query will be promise
+database.getUserID(id)
+   .then(user => {
+      done(null, user)
+   })
 });
 
 
@@ -78,7 +83,7 @@ app.get('/signup', (req, res) => {
 
 app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.id)
-   res.render('user/homepage', )
+   res.render('user/homepage')
 })
 
 app.get('/logout', function(req, res){
@@ -121,7 +126,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
       .then((user) => {
          req.login(user, (err) => {
             if(err) {console.error(err)}
-            res.redirect('/homepage', {username: user.username});
+            res.redirect('/homepage');
          })
       })
 
