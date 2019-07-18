@@ -117,7 +117,10 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
    console.log("going to register.js: register()")
 
    register.register(null, data)
-   res.redirect('/homepage');
+      .then(() => {
+         res.redirect('/homepage');
+      })
+
 })
 
 

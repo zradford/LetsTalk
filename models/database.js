@@ -29,13 +29,17 @@ function checkLogin(username, password){
 }
 
 function registerUser(data) {
-   console.log("in database.register()")
+   console.log("in database.registerUSER()")
    const query = "INSERT INTO users (user_id, first_name, last_name, email, username, hash_pass) VALUES(DEFAULT, $1, $2, $3, $4, $5)";
    const values = [data.first, data.last, data.email, data.username, data.password];
    return client.query(query, values)
       .then(r => { 
-         console.log('User Object: !!!!!!!!!!!', r.rows[0])
-         return r.rows[0];
+         console.log(r.rows)
+         return new Promise((resolve, reject) => {
+            if(r.rowCount == 0) {
+                reject('reject') 
+            } else resolve(r.rows[0]);
+         })
       })
       .catch(e => console.error(e.stack))
       .finally(() => client.end())
