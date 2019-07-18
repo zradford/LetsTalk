@@ -6,8 +6,10 @@ li {
    height: 100%;
 }
 .sidebar > a {
-   display: inline-block;
-   height: 10vw;
-   width: 20vw;
+   display: block;
+   height: 5vw;
+   width: 10vw;
    text-decoration: none;
+   text-align: center;
+
 }
