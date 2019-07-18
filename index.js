@@ -10,7 +10,6 @@ const passport = require('passport')
 const database = require('./models/database')
 
 
-
 const app = express()
 
 const PORT = process.env.PORT || 3000
@@ -29,6 +28,16 @@ app.engine('hbs', exphbs( {
 }))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
+
+/**
+ * Creating some handlebars helpers
+ */
+var hbs = exphbs.create({
+   helpers: {
+      myHelper: function() {return username}
+   }
+})
+
 
 // start app
 app.listen(PORT)
@@ -149,7 +158,5 @@ function cleanStr(str){
    return str.trim();
 }
 
-/**
- * Creating some handlebars helpers
- */
+
 
