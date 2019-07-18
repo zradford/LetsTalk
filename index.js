@@ -34,7 +34,7 @@ app.set('view engine', 'hbs')
  */
 var hbs = exphbs.create({
    helpers: {
-      myHelper: function() {return username}
+      myHelper: function() {return "username"}
    }
 })
 
@@ -90,7 +90,12 @@ app.get('/signup', (req, res) => {
 
 app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.username)
-   res.render('user/homepage', {username : req.user.username})
+   res.render('user/homepage', {
+      username : req.user.username, 
+      helpers : { 
+         myHelper: function(){ return req.user.username }
+      }
+   })
 })
 
 app.get('/logout', function(req, res){
