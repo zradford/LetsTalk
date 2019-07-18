@@ -31,13 +31,14 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.user_id);
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// do my own query: select * from users where user_id = id
 });
 
 
