@@ -32,10 +32,12 @@ app.set('view engine', 'hbs')
 /**
  * Creating some handlebars helpers
  */
-exphbs.registerHelper('myHelper', ()=> {
-   return database.query("SELECT username, region_1 FROM users WHERE user_id = $1", req.user.user_id)
-})
-
+var hbs = exphbs.create({
+   helpers: {
+      foo: function () {return 'foo';},
+      bar: function () {return 'bar';}
+   }
+});
 
 // start app
 app.listen(PORT)
