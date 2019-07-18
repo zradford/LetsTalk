@@ -91,10 +91,7 @@ app.get('/signup', (req, res) => {
 app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.username)
    res.render('user/homepage', {
-      username : req.user.username, 
-      helpers : { 
-         myHelper: function(){ return req.user.username }
-      }
+      username : req.user.username
    })
 })
 
