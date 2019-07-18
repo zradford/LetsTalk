@@ -63,9 +63,10 @@ app.use((req, res, next) => {
 
 // routes
 app.get("/", (req, res) =>{
-   if(req.user.id) {
-      res.render('/homepage')
-   } else { res.render('index')}
+   // if(req.user && ) {
+   //    res.render('/homepage')
+   // } else { res.render('index')}
+   res.render('index')
 })
 
 app.get('/login', (req, res) => {
