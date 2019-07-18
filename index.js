@@ -101,7 +101,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
       login.login(null, data)
          .then((isValidated) => {
             if(isValidated){
-               database.getUserId(data.username)
+               database.getUser(data.username)
                   .then(user => {
                      console.log('running req.login in the /loggingin route')
                      req.login(user, (err) => {
