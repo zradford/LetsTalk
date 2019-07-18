@@ -99,7 +99,7 @@ app.post('/loggingin', /*urlencodedparser,*/ (req, res) => {
       login.login(null, data)
          .then((isValidated) => {
             if(isValidated){
-               database.getUserId(username)
+               database.getUserId(data.username)
                   .then(user => {
                      req.login(user, (err) => {
                         if(err) {console.error(err)}
