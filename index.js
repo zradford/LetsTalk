@@ -116,6 +116,7 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
       password : cleanStr(req.body.password[0])
    }
    console.log("going to register.js: register()")
+
    register.register(null, data)
    res.redirect('user/homepage');
 })

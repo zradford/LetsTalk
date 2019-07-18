@@ -9,10 +9,10 @@ function register(err, data) {
       throw err;
    }
    console.log("going to hash.js for storage")
-   hasher.hasher(data.password)
+   return hasher.hasher(data.password)
       .then(res => {
          data.password = res;
-         db.registerUser(data)
+         return db.registerUser(data)
       })
 }
 
