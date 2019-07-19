@@ -96,7 +96,7 @@ app.get('/signup', (req, res) => {
 app.get('/homepage', (req, res) => {
    database.getUserData(req.user.username)
       .then(topics => {
-         res.render('user/homepage', {
+         res.render('/homepage', {
             username : req.user.username,
             myTopics : topics
          })
