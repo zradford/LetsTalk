@@ -1,19 +1,16 @@
-li {
-   float: left;
+main {
+   display: flex;
+   flex-flow: column;
 }
 
-.sidebar {
-   height: 100%;
-}
 .sidebar > a {
    color: white;
-   display: block;
+   display: inline-block;
    
-   height: 5vw;
+   height: 2vw;
    width: 10vw;
    margin:.5vw;
-   padding: 5px;
-   position: relative;
+   padding: 3px;
 
    text-decoration: none;
    text-align: center;
@@ -24,19 +21,15 @@ li {
    background-color: #4b5e4b;
 }
 
-a {
-   min-width: 100px;
-}
-
-
 .feed {
-   float: center;
    display: flex;
    flex-flow: column;
    justify-content: flex-start;
    align-items: stretch;
+   flex-grow: 2;
+   padding: 5%;
 }
 
-.feed > * {
-   flex: 1 100%;
+.topic {
+   background-color: darkolivegreen;
 }
