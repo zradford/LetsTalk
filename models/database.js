@@ -82,7 +82,7 @@ function getUser(username) {
 
 function getUserData(username) {
    console.log('in db.getUserData')
-   let query ="SELECT t.topic_name, t.description FROM topic t, users u  WHERE u.region_one = t.region  OR u.region_two = t.region  OR u.region_three = t.region AND u.username = $1"
+   let query ="SELECT t.topic_name, t.description FROM topic t, users u WHERE u.region_one = t.region OR u.region_two = t.region  OR u.region_three = t.region AND u.username = $1"
    let values = [username]
    return client.query(query, values)
       .then(res => {
