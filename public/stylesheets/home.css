@@ -36,3 +36,7 @@ a {
    justify-content: flex-start;
    align-items: stretch;
 }
+
+.feed > * {
+   flex: 1 100%;
+}

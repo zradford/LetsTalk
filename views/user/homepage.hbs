@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="stylesheets/home.css">
-<div class="sidebar">
+
+<main>
+   <div class="sidebar">
          <a> {{#if first_name}}{{first_name}}{{/if}} Home</a>
          <a href="/settings">Settings</a>
          <a href="/logout">Log Out</a>
-</div>
-<main>
+   </div>
    <div class="feed">
 {{#listTopics myTopics}}
    <div class="topic">
