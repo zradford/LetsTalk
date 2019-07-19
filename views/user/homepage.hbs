@@ -5,7 +5,10 @@
          <a href="/logout">Log Out</a>
 </div>
 <main>
-{{#list username}}
-   {{test}}
-{{/list}}
+{{#listTopics myTopics}}
+   <div class="topic">
+      <h2>{{topic_name}}</h2>
+      <p>{{description}}</p>
+   </div>
+{{/listTopics}}
 </main>

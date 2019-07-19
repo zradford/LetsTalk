@@ -73,7 +73,18 @@ function getUser(username) {
 
 function getUserData(user_id) {
    console.log('in db.getUserData')
-   let query =""
+   let query ="SELECT t.topic, t.description FROM topic t, user u  WHERE u.region_one = t.region  OR u.region_two = t.region  OR u.region_three = t.region AND u.user_id = $1"
+   let values = [user_id]
+   client.query(query, values)
+      .then(res => {
+         return new Promise((resolve, reject) => {
+            if(res.rowCount == 0) {
+                reject('reject') 
+            } else resolve(res.rows[0]);
+         })
+      })
+      .catch(e => console.error(e.stack))
+      // .finally(() => client.end())
 }
 
 module.exports = {

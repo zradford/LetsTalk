@@ -29,11 +29,12 @@ var hbs = exphbs.create({
    layoutsDir: __dirname + '/views/layouts',
    partialsDir: __dirname + '/views/partials',
    helpers: {
-      calculation: function(value) {
-         return value + 7;
-      }, 
-      list: function(value, options){
-         return "<h2>" + options.fn({test: value}) + "</h2>"
+      listTopics: function(value, options) {
+         let topics = ""
+         for(let i = 0; i < value.length; i++){
+            topics = topics + "<h2>" + options.fn(value[i]) + "</h2>"
+         }
+         return topics;
       }
    },
 });
@@ -41,8 +42,6 @@ var hbs = exphbs.create({
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')  
 app.set('views', path.join(__dirname, 'views'))
-
-
 
 
 // start app
@@ -95,13 +94,13 @@ app.get('/signup', (req, res) => {
 })
 
 app.get('/homepage', (req, res) => {
-   //database.getUserData(req.user.username)
-   res.render('user/homepage', {
-      username : req.user.username,
-      helpers: {
-         
-      }
-   })
+   database.getUserData(req.user.username)
+      .then(topics => {
+         res.render('user/homepage', {
+            username : req.user.username,
+            myTopics : topics
+         })
+      })
 })
 
 app.get('/logout', function(req, res){
