@@ -80,7 +80,10 @@ function getUserData(username) {
          return new Promise((resolve, reject) => {
             if(res.rowCount == 0) {
                 reject('reject') 
-            } else resolve(res.rows[0]);
+            } else {
+               console.log("result of get user data query: " + res.rows[0])
+               resolve(res.rows[0]);
+            }
          })
       })
       .catch(e => console.error(e.stack))
