@@ -2,19 +2,20 @@
 
 <main>
    <div class="sidebar">
-         <a> Home</a>
-         <a href="/settings">Settings</a>
-         <a href="/logout">Log Out</a>
+      <a> Home</a>
+      <a href="/settings">Settings</a>
+      <a href="/logout">Log Out</a>
    </div>
    <div class="feed">
-{{#listTopics myTopics}}
-   <div class="topic">
-      <h2>{{topic_name}}</h2>
-      <p>{{description}}</p>
+      {{#listTopics myTopics}}
+      <div class="topic">
+         <h2>{{topic_name}}</h2>
+         <p>{{description}}</p>
+      </div>
+      {{/listTopics}}
+      <div class="yours">
+         right now there is nothing here
+      </div>
    </div>
-{{/listTopics}}
-   </div>
-   <div class="yours">
-      right now there is nothing here
-   </div>
+
 </main>
