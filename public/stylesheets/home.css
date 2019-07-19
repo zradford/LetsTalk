@@ -32,4 +32,6 @@ main {
 
 .topic {
    background-color: darkolivegreen;
+   margin: 5px;
+   padding: 10px;
 }
