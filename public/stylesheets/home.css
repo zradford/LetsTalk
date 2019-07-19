@@ -13,7 +13,7 @@ li {
    width: 10vw;
    margin:.5vw;
    padding: 5px;
-   position: fixed;
+   position: absolute;
 
    text-decoration: none;
    text-align: center;

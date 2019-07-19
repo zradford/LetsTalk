@@ -31,6 +31,9 @@ var hbs = exphbs.create({
    helpers: {
       calculation: function(value) {
          return value + 7;
+      }, 
+      list: function(value){
+         
       }
    },
 });
