@@ -27,3 +27,12 @@ li {
 a {
    min-width: 100px;
 }
+
+
+.feed {
+   float: center;
+   display: flex;
+   flex-flow: column;
+   justify-content: flex-start;
+   align-items: stretch;
+}

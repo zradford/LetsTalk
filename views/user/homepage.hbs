@@ -5,10 +5,12 @@
          <a href="/logout">Log Out</a>
 </div>
 <main>
+   <div class="feed">
 {{#listTopics myTopics}}
    <div class="topic">
       <h2>{{topic_name}}</h2>
       <p>{{description}}</p>
    </div>
 {{/listTopics}}
+   </div>
 </main>
