@@ -21,6 +21,11 @@ main {
    background-color: #4b5e4b;
 }
 
+.content {
+   display: flex;
+   flex-flow: row
+}
+
 .feed {
    display: flex;
    flex-flow: column;
@@ -34,4 +39,9 @@ main {
    background-color: darkolivegreen;
    margin: 5px;
    padding: 10px;
+}
+
+.yours {
+   display: flex;
+   flex-flow: column;
 }
