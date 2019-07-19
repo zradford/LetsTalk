@@ -66,7 +66,16 @@ function getUser(username) {
    let query = "SELECT * FROM users WHERE username = $1"
    let values = [username];
    return client.query(query, values)
-      .then(res => res.rows[0])
+      .then(res => {
+         return new Promise((resolve, reject) => {
+            if(res.rowCount == 0) {
+                reject('reject') 
+            } else {
+               console.log("result of get user query: " + res.rows[0])
+               resolve(res.rows[0]);
+            }
+         })
+      })
       .catch(e => console.error(e.stack))
       // .finally(() => client.end())
 }
