@@ -24,3 +24,6 @@ li {
    background-color: #4b5e4b;
 }
 
+a {
+   min-width: 100px;
+}
