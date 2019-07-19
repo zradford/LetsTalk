@@ -20,24 +20,27 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.engine('hbs', exphbs( {
-   extname: 'hbs',
-   defaultLayout: 'default',
-   layoutsDir: __dirname + '/views/layouts',
-   partialsDir: __dirname + '/views/partials'
-}))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hbs')
-
 /**
  * Creating some handlebars helpers
  */
 var hbs = exphbs.create({
+   extname: 'hbs',
+   defaultLayout: 'default',
+   layoutsDir: __dirname + '/views/layouts',
+   partialsDir: __dirname + '/views/partials',
    helpers: {
-      foo: function () {return 'foo';},
-      bar: function () {return 'bar';}
-   }
+      calculation: function(value) {
+         return value + 7;
+      }
+   },
 });
+
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs')  
+app.set('views', path.join(__dirname, 'views'))
+
+
+
 
 // start app
 app.listen(PORT)
@@ -92,6 +95,9 @@ app.get('/homepage', (req, res) => {
    //database.getUserData(req.user.username)
    res.render('user/homepage', {
       username : req.user.username,
+      helpers: {
+         
+      }
    })
 })
 
