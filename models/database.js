@@ -109,6 +109,10 @@ function getUserRegions(username) {
    let query = "SELECT r.region_id, r.region_name FROM region r JOIN users u ON r.region_id = u.region_one OR r.region_id = u.region_two OR r.region_id = u.region_three WHERE u.username  = $1"
    let values = [username]
    return client.query(query, values)
+   .then(data => {
+      console.log("this is in getUserRegions" + data)
+      return data
+   })
 }
 
 function setUserRegions(rOne, rTwo, rThree, username) {
