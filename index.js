@@ -46,7 +46,8 @@ var hbs = exphbs.create({
             }
          }    
          return option;
-   },
+      }
+   }
 });
 
 app.engine('hbs', hbs.engine)
