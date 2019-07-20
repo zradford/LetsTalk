@@ -2,7 +2,9 @@
 <p>Let's Start by choosing a few Regions to join</p>
 <form id="setRegions" onsubmit="newRegions()">
    {{#optionFiller regions}}
+   <select>
       <option id="region_{{region_id}}" value="{{region_id}}">{{region_name}}</option>
+   </select>
    {{/optionFiller}}
    <input type="submit">
 </form>
