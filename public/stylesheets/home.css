@@ -3,7 +3,7 @@ main {
    flex-flow: column;
 }
 
-.sidebar > a {
+.sidebar > div {
    color: white;
    display: inline-block;
    
@@ -16,7 +16,7 @@ main {
    text-align: center;
 }
 
-.sidebar > a:hover {
+.sidebar > div:hover {
    color: black;
    background-color: #4b5e4b;
 }
