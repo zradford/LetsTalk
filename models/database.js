@@ -110,7 +110,7 @@ function getUserRegions(username) {
    let values = [username]
    return client.query(query, values)
    .then(data => {
-      console.log("this is in getUserRegions" + data)
+      console.log("this is in getUserRegions " + data)
       return data
    })
 }
@@ -123,6 +123,9 @@ function setUserRegions(rOne, rTwo, rThree, username) {
 
 function getAllRegions(){
    return client.query("select * from region")
+      .then(data => {
+         console.dir(data)
+      })
 }
 
 
