@@ -195,6 +195,12 @@ app.post('/api/topics', (req,res) => {
 
 })
 
+app.post('/api/topics', (req,res) => { 
+   database.setUserRegions(req.body.region_1, req.body.region_2, req.body.region_3, req.user.username)
+      .then(data => res.send(data))
+      .catch(e => console.log(e))
+})
+
 /**
  * This came from this (specifically user: Johann Echavarria):
  * https://stackoverflow.com/questions/23187013/is-there-a-better-way-to-sanitize-input-with-javascript

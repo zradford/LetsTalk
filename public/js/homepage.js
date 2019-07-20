@@ -29,7 +29,7 @@ function postNewTopic(){
 function newRegions(){
    let myForm = document.getElementById('setRegions');
    let formData = new FormData(myForm);
-   fetch('/api/topics', {
+   fetch('/api/regions', {
       method: 'POST',
       credentials: "include",
       body: formData,
