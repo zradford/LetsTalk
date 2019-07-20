@@ -161,8 +161,13 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
 })
 
 
-app.get('/api/topics', (req,res) => {
-   
+app.post('/api/topics', (req,res) => {
+   // post the topics
+   // also return the topic info for updating page
+   database.newTopic(req.user.user_id, req.body.topic_name, req.body.desc, req.body.region)
+      .then(data => res.json(data))
+      .catch(e => console.log(e))
+
 })
 
 /**
