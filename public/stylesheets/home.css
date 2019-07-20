@@ -5,6 +5,7 @@ main {
 
 .sidebar > div {
    color: white;
+   background-color: #638363;
    display: inline-block;
    
    height: 2vw;
@@ -12,13 +13,16 @@ main {
    margin:.5vw;
    padding: 3px;
 
-   text-decoration: none;
    text-align: center;
 }
 
 .sidebar > div:hover {
    color: black;
    background-color: #4b5e4b;
+}
+
+a {
+   text-decoration: none;
 }
 
 .content {
