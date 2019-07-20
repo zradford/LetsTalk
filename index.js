@@ -195,7 +195,7 @@ app.post('/api/topics', (req,res) => {
 
 })
 
-app.post('/api/topics', (req,res) => { 
+app.post('/api/regions', (req,res) => { 
    database.setUserRegions(req.body.region_1, req.body.region_2, req.body.region_3, req.user.username)
       .then(data => {
          console.log(data)
