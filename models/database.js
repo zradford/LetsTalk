@@ -109,9 +109,9 @@ function getUserRegions(username) {
    let query = "SELECT r.region_id, r.region_name FROM region r JOIN users u ON r.region_id = u.region_one OR r.region_id = u.region_two OR r.region_id = u.region_three WHERE u.username  = $1"
    let values = [username]
    return client.query(query, values)
-   .then(data => {
-      console.log("this is in getUserRegions " + data)
-      return data
+   .then(res => {
+      console.log("this is in getUserRegions " + res.rows)
+      return res.rows
    })
 }
 
@@ -123,8 +123,9 @@ function setUserRegions(rOne, rTwo, rThree, username) {
 
 function getAllRegions(){
    return client.query("select * from region")
-      .then(data => {
-         console.dir(data)
+      .then(res => {
+         console.dir(res.rows)
+         return res.rows;
       })
 }
 
