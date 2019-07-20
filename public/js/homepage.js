@@ -8,7 +8,8 @@ function postNewTopic(){
    reqBody.append('region', region)
    reqBody.append('desc', desc)
 
-   fetch('/api/topics',{
+   
+   fetch('/api/topics', {
       method: 'POST',
       credentials: "include",
       body: reqBody
