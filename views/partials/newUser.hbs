@@ -1,8 +1,8 @@
 <h1>Welcome!</h1>
 <p>Let's Start by choosing a few Regions to join</p>
 <form id="setRegions" onsubmit="newRegions()">
-   {{#optionfiller regions}}
+   {{#optionFiller regions}}
       <option id="region_{{region_id}}" value="{{region_id}}">{{region_name}}</option>
-   {{/optionfiller}}
+   {{/optionFiller}}
    <input type="submit">
 </form>
