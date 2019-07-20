@@ -48,6 +48,6 @@ a {
 .yours {
    display: flex;
    flex-flow: column;
-   padding-top: 5%;
    padding: 1%;
+   padding-top: 5%;
 }
