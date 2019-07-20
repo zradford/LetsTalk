@@ -22,6 +22,6 @@ function postNewTopic(){
     return response.json();
    })
    .then(myJson => {
-      document.getElementById('myPosts').innerText = myJson.stringify(myJson);
+      document.getElementById('myPosts').innerText = myJson.topic_name
    })
 }
