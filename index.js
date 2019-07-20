@@ -120,6 +120,7 @@ app.get('/homepage', (req, res) => {
                //this is a new user, so pass info for the newUser partial
                database.getAllRegions()
                   .then(regions => {
+                     console.log("in app.get(homepage), this is returned: " + regions)
                      res.render('user/homepage', {
                         username : req.user.first_name,
                         regions : regions
@@ -196,8 +197,8 @@ app.post('/api/topics', (req,res) => {
 })
 
 app.post('/api/regions', (req,res) => { 
-   console.log(req)
-   database.setUserRegions(req.body.region_1, req.body.region_2, req.body.region_3, req.user.username)
+   console.log("this is in /api/regions" + req.body)
+   database.setUserRegions(req.body.region_one, req.body.region_two, req.body.region_three, req.user.username)
       .then(data => {
          console.log("this is in /api/regions:  " + data)
          res.send(data)
