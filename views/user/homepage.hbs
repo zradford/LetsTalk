@@ -8,23 +8,32 @@
       <div><a href="/logout">Log Out</a></div>
    </div>
    <div class="content">
-      <div class="createNew">
-         <input type="text" id="newTopic" placeholder="topic name">
-         <textarea id="desc" placeholder="Description"></textarea>
-         <input type="text" id="region" placeholder="Region..">
-         <button onclick="postNewTopic()">Post</button>
-      </div>
       <div class="feed">
+         {{#if myTopics}}
+         <div class="createNew">
+            <input type="text" id="newTopic" placeholder="topic name">
+            <textarea id="desc" placeholder="Description"></textarea>
+            <input type="text" id="region" placeholder="Region..">
+            <select>
+               {{#optionfiller regions}}
+               <option value="{{region_id}}">{{region_name}}</option>
+               {{/optionfiller}}
+            </select>
+            <button onclick="postNewTopic()">Post</button>
+         </div>
          {{#listTopics myTopics}}
          <div class="topic">
             <h2>{{topic_name}}</h2>
             <p>{{description}}</p>
          </div>
          {{/listTopics}}
+         {{else}}
+            {{> newUser}}
+         {{/if}}
       </div>
       <div class="yours">
          <div id="myPosts">
-            right now there is nothing here
+            Create a Topic to see your topics here!
          </div>
       </div>
    </div>

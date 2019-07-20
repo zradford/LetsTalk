@@ -25,3 +25,16 @@ function postNewTopic(){
       document.getElementById('myPosts').innerText = myJson.topic_name
    })
 }
+
+function newRegions(){
+   let myForm = document.getElementById('setRegions');
+   let formData = new FormData(myForm);
+   fetch('/api/topics', {
+      method: 'POST',
+      credentials: "include",
+      body: formData,
+   })
+   .then(response => {
+    return response.json();
+   })
+}

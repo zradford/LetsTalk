@@ -105,6 +105,22 @@ function newTopic(user_id, name, desc, region) {
    return client.query(query, values)
 }
 
+function getUserRegion(username) {
+   let query = "SELECT r.region_id, r.region_name FROM region r JOIN users u ON r.region_id = u.region_one OR r.region_id = u.region_two OR r.region_id = u.region_three WHERE u.username  = $1"
+   let values = [username]
+   return client.query(query, values)
+}
+
+function setUserRegion(rOne, rTwo, rThree, username) {
+   let query = "UPDATE users SET region_one = $1, region_two = $2, region_three = $3 WHERE username = $4;"
+   let values = [rOne, rTwo, rThree, username]
+   return client.query(query, values)
+}
+
+function getAllRegions(){
+   return client.query("select * from region")
+}
+
 
 module.exports = {
    checkLogin : checkLogin,
@@ -112,5 +128,8 @@ module.exports = {
    getUserId : getUserId,
    getUser : getUser,
    getUserData : getUserData,
-   newTopic : newTopic
+   newTopic : newTopic,
+   getUserRegion : getUserRegion, 
+   setUserRegion : setUserRegion,
+   getAllRegions : getAllRegions
 };

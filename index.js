@@ -35,10 +35,17 @@ var hbs = exphbs.create({
             for(let i = 0; i < value.length; i++){
                topics += options.fn(value[i])
             }
-         }
-         
+         }    
          return topics;
-      }
+      },
+      optionFiller: function(value, options) {
+         let option = ""
+         if(value){
+            for(let i = 0; i < value.length; i++){
+               option += options.fn(value[i])
+            }
+         }    
+         return option;
    },
 });
 
@@ -99,9 +106,25 @@ app.get('/signup', (req, res) => {
 app.get('/homepage', (req, res) => {
    database.getUserData(req.user.username)
       .then(topics => {
-         res.render('user/homepage', {
-            username : req.user.first_name,
-            myTopics : topics
+         console.log(topics)
+         database.getUserRegions(req.user.username)
+         .then(regions => {
+            if(topics){
+               res.render('user/homepage', {
+                  username : req.user.first_name,
+                  myTopics : topics,
+                  regions : regions
+               })
+            } else {
+               //this is a new user, so pass info for the newUser partial
+               database.getAllRegions()
+                  .then(regions => {
+                     res.render('user/homepage', {
+                        username : req.user.first_name,
+                        regions : regions
+                     })
+                  })
+            }
          })
       })
 })
