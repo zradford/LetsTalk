@@ -90,7 +90,7 @@ function getUserData(username) {
             if(res.rowCount == 0) {
                 reject('reject') 
             } else {
-               console.log("result of get user data query: " + res.rows[0].topic_name)
+               console.log("returning userData")
                resolve(res.rows);
             }
          })

@@ -31,9 +31,12 @@ var hbs = exphbs.create({
    helpers: {
       listTopics: function(value, options) {
          let topics = ""
-         for(let i = 0; i < value.length; i++){
-            topics += options.fn(value[i])
+         if(value.length > 0){
+            for(let i = 0; i < value.length; i++){
+               topics += options.fn(value[i])
+            }
          }
+         
          return topics;
       }
    },
