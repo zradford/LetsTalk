@@ -161,6 +161,10 @@ app.post('/newuser', /*urlencodedparser,*/ (req, res) => {
 })
 
 
+app.get('/api/topics', (req,res) => {
+   
+})
+
 /**
  * This came from this (specifically user: Johann Echavarria):
  * https://stackoverflow.com/questions/23187013/is-there-a-better-way-to-sanitize-input-with-javascript

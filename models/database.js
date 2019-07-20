@@ -99,10 +99,22 @@ function getUserData(username) {
       // .finally(() => client.end())
 }
 
+function newTopic(user_id, name, desc, region) {
+   let query = "INSERT INTO topic VALUES(DEFAULT, $1, $2, $3, $4) RETURNING *"
+   let values = [user_id, name, desc, region]
+   return client.query(query, values)
+      .then(res => {
+         return res.JSON()
+      })
+      .catch(e => console.log("OOPS, an error occurred: " + e));
+}
+
+
 module.exports = {
    checkLogin : checkLogin,
    registerUser : registerUser,
    getUserId : getUserId,
    getUser : getUser,
-   getUserData : getUserData
+   getUserData : getUserData,
+   newTopic : newTopic
 };

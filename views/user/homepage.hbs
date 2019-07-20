@@ -9,9 +9,10 @@
    </div>
    <div class="content">
       <div class="createNew">
-         <textarea id="newTopic">
-
-         </textarea>
+         <input type="text" id="newTopic">
+         <textarea id="desc" placeholder="Description"></textarea>
+         <input type="text" id="region" placeholder="Region..">
+         <button onclick="post()">Post</button>
       </div>
       <div class="feed">
          {{#listTopics myTopics}}
@@ -22,7 +23,7 @@
          {{/listTopics}}
       </div>
       <div class="yours">
-         <div>
+         <div id="myPosts">
             right now there is nothing here
          </div>
       </div>
