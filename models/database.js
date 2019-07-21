@@ -103,6 +103,10 @@ function newTopic(user_id, name, desc, region) {
    let query = "INSERT INTO topic VALUES(DEFAULT, $1, $2, $3, $4) RETURNING *"
    let values = [user_id, name, desc, region]
    return client.query(query, values)
+      .then(data => {
+         console.log('in newTopic(): ' + data)
+         return data.rows
+      })
 }
 
 function getUserRegions(username) {
