@@ -2,7 +2,7 @@ function postNewTopic(){
    let topic_name = document.getElementById('newTopic').value;
    let desc = document.getElementById('desc').value
 
-   let region_el = document.getElementById('country')
+   let region_el = document.getElementById('region')
    let region = region_el.options[region_el.selectedIndex].value;
 
    let reqBody = {
