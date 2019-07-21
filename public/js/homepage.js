@@ -1,7 +1,9 @@
 function postNewTopic(){
    let topic_name = document.getElementById('newTopic').value;
-   let region = null
    let desc = document.getElementById('desc').value
+
+   let region_el = document.getElementById('country')
+   let region = region_el.options[region_el.selectedIndex].value;
 
    let reqBody = {
       topic_name: topic_name,

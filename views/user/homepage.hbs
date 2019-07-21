@@ -13,8 +13,7 @@
          <div class="createNew">
             <input type="text" id="newTopic" placeholder="topic name">
             <textarea id="desc" placeholder="Description"></textarea>
-            <input type="text" id="region" placeholder="Region..">
-            <select>
+            <select id="region">
                {{#optionFiller regions}}
                <option value="{{region_id}}">{{region_name}}</option>
                {{/optionFiller}}
