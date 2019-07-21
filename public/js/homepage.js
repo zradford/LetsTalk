@@ -24,6 +24,7 @@ function postNewTopic(){
     return response.json();
    })
    .then(myJson => {
+      console.log("in the /topics fetch .then: " + myJson)
       document.getElementById('myPosts').innerText = myJson.topic_name
    })
 }

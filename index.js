@@ -191,7 +191,10 @@ app.post('/api/topics', (req,res) => {
    // also return the topic info for updating page
    console.log(req.body)
    database.newTopic(req.user.user_id, req.body.topic_name, req.body.desc, req.body.region)
-      .then(data => res.json(data))
+      .then(data => {
+         console.log("in the /topics route: "+data)
+         res.json(data)
+      })
       .catch(e => console.log(e))
 
 })
