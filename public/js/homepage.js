@@ -4,11 +4,13 @@ function postNewTopic(){
 
    let region_el = document.getElementById('region')
    let region = region_el.options[region_el.selectedIndex].value;
+   let region_name = region_el.options[region_el.selectedIndex].text
 
    let reqBody = {
-      topic_name: topic_name,
+      topic_name : topic_name,
       region : region,
-      desc: desc
+      desc : desc,
+      region_name : region_name
    }
 
 
@@ -25,7 +27,8 @@ function postNewTopic(){
    })
    .then(myJson => {
       console.log("in the /topics fetch .then: " + myJson)
-      document.getElementById('myPosts').innerText = myJson.topic_name
+      document.getElementById('myPosts').innerText = `<div> <h4>${myJson[0].topic_name}</h4> 
+                                                      <p>${myJson[0].region_name}</p></div>`
    })
 }
 
