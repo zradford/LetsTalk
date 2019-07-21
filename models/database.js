@@ -82,7 +82,7 @@ function getUser(username) {
 
 function getUserData(username) {
    console.log('in db.getUserData')
-   let query ="SELECT t.topic_name, t.description, t.region FROM topic t INNER JOIN users u ON t.region = u.region_one OR t.region = u.region_two OR t.region = u.region_three WHERE u.username = $1"
+   let query = "SELECT t.topic_name, t.description, r.region_name FROM topic t INNER JOIN users u ON t.region = u.region_one OR t.region = u.region_two OR t.region = u.region_three INNER JOIN region r on t.region = r.region_id WHERE u.username = '$1'"
    let values = [username]
    return client.query(query, values)
       .then(res => {
@@ -127,12 +127,13 @@ function setUserRegions(rOne, rTwo, rThree, username) {
 
 function getAllRegions(){
    return client.query("select * from region")
-      .then(res => {
-         console.dir(res.rows)
-         return res.rows;
-      })
 }
 
+function getUsersPosts(user_id) {
+   let query = "select t.topic_name, r.region_name from topic t join region r on t.region = r.region_id where t.creator_id = $1"
+   let values = [user_id]
+   return client.query(query, values)
+}
 
 module.exports = {
    checkLogin : checkLogin,
@@ -143,5 +144,6 @@ module.exports = {
    newTopic : newTopic,
    getUserRegions : getUserRegions, 
    setUserRegions : setUserRegions,
-   getAllRegions : getAllRegions
+   getAllRegions : getAllRegions,
+   getUsersPosts : getUsersPosts
 };

@@ -25,11 +25,11 @@ function postNewTopic(){
    .then(response => {
     return response.json();
    })
-   .then(myJson => {
-      console.log("in the /topics fetch .then: " + myJson)
-      document.getElementById('myPosts').innerHTML = `<div><h4>${myJson[0].topic_name}</h4> 
-                                                      <p>${myJson[0].region}</p></div>`
-   })
+   // .then(myJson => {
+   //    console.log("in the /topics fetch .then: " + myJson)
+   //    document.getElementById('myPosts').innerHTML = `<div><h4>${myJson[0].topic_name}</h4> 
+   //                                                    <p>${myJson[0].region}</p></div>`
+   // })
 }
 
 function newRegions(){
