@@ -27,12 +27,30 @@ function postNewTopic(){
 }
 
 function newRegions(){
-   let myForm = document.getElementById('setRegions');
-   let formData = new FormData(myForm);
+   let el_one = document.getElementById('country')
+   let id_one = el_one.options[el_one.selectedIndex].value;
+
+   let el_two = document.getElementById('state')
+   let id_two = el_two.options[el_two.selectedIndex].value
+
+   let el_three = document.getElementById('city')
+   let id_three = el_three.options[el_three.selectedIndex].value
+
+
+   let reqBody = {
+      id_one : id_one,
+      id_two : id_two,
+      id_three : id_three
+   }
+
+
    fetch('/api/regions', {
       method: 'POST',
       credentials: "include",
-      body: formData,
+      body: JSON.stringify(reqBody),
+      headers : {
+         'Content-Type': 'application/json'
+      }
    })
    .then(response => {
     return response.json();

@@ -198,10 +198,10 @@ app.post('/api/topics', (req,res) => {
 
 app.post('/api/regions', (req,res) => { 
    console.log("this is in /api/regions" + req.body)
-   database.setUserRegions(req.body.region_one, req.body.region_two, req.body.region_three, req.user.username)
+   database.setUserRegions(req.body.id_one, req.body.id_two, req.body.id_three, req.user.username)
       .then(data => {
          console.log("this is in /api/regions:  " + data)
-         res.send(data)
+         res.redirect('/homepage')
       })
       .catch(e => console.log(e))
 })
