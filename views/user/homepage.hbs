@@ -11,6 +11,7 @@
       <div class="feed">
          {{#if myTopics}}
          <div class="createNew">
+            <form>
             <input type="text" id="newTopic" placeholder="topic name">
             <textarea id="desc" placeholder="Description"></textarea>
             <select id="region">
@@ -18,7 +19,8 @@
                <option value="{{region_id}}">{{region_name}}</option>
                {{/optionFiller}}
             </select>
-            <button onclick="postNewTopic()">Post</button>
+            <button type="submit" onclick="postNewTopic()">Post</button>
+            </form>
          </div>
          {{#listTopics myTopics}}
          <div class="topic">
