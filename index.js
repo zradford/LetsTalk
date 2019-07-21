@@ -114,7 +114,6 @@ app.get('/homepage', (req, res) => {
                   .then(user_posts => {
                      console.log("after getting user posts: ", {region: regions[0].region_one, topic: topics[0].topic_name, post: user_posts[0].topic_name})
                      res.render('user/homepage', {
-                        username : req.user.first_name,
                         myTopics : topics,
                         regions : regions,
                         user_posts : user_posts
@@ -126,7 +125,6 @@ app.get('/homepage', (req, res) => {
                   .then(regions => {
                      console.log("in app.get(homepage), this is returned: " + regions)
                      res.render('user/homepage', {
-                        username : req.user.first_name,
                         regions : regions
                      })
                   })
