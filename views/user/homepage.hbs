@@ -33,14 +33,16 @@
          {{/if}}
       </div>
       <div class="yours">
-
-         {{#listTopics user_posts}}
-         <div class="myPosts">
-            <h2>{{topic_name}}</h2>
-            <span style="float:right">{{region_name}}</span>
-         </div>
-         {{/listTopics}}!
-
+         {{#if user_posts}}
+            {{#listTopics user_posts}}
+            <div class="myPosts">
+               <h2>{{topic_name}}</h2>
+               <span style="float:right">{{region_name}}</span>
+            </div>
+            {{/listTopics}}
+            {{else}}
+            Create a new Topic to see it here!
+         {{/if}}
       </div>
    </div>
 </main>
