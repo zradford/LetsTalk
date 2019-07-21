@@ -112,6 +112,7 @@ app.get('/homepage', (req, res) => {
             if(topics){
                database.getUsersPosts(req.user.user_id)
                   .then(user_posts => {
+                     console.log(regions[0], topics[0], user_posts[0])
                      res.render('user/homepage', {
                         username : req.user.first_name,
                         myTopics : topics,
