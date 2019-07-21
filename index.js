@@ -107,11 +107,10 @@ app.get('/signup', (req, res) => {
 app.get('/homepage', (req, res) => {
    database.getUserData(req.user.username)
       .then(topics => {
-         console.log(topics)
          database.getUserRegions(req.user.username)
          .then(regions => {
             if(topics){
-               database.getUsersPosts(req.users.user_id)
+               database.getUsersPosts(req.user.user_id)
                   .then(user_posts => {
                      res.render('user/homepage', {
                         username : req.user.first_name,
