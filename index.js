@@ -111,11 +111,15 @@ app.get('/homepage', (req, res) => {
          database.getUserRegions(req.user.username)
          .then(regions => {
             if(topics){
-               res.render('user/homepage', {
-                  username : req.user.first_name,
-                  myTopics : topics,
-                  regions : regions
-               })
+               database.getUsersPosts(req.users.user_id)
+                  .then(user_posts => {
+                     res.render('user/homepage', {
+                        username : req.user.first_name,
+                        myTopics : topics,
+                        regions : regions,
+                        user_posts : user_posts
+                     })
+                  })
             } else {
                //this is a new user, so pass info for the newUser partial
                database.getAllRegions()
