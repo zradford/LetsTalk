@@ -193,7 +193,7 @@ app.post('/api/topics', (req,res) => {
    database.newTopic(req.user.user_id, req.body.topic_name, req.body.desc, req.body.region)
       .then(data => {
          console.log("in the /topics route: "+data)
-         res.json(data)
+         return res.json(data)
       })
       .catch(e => console.log(e))
 
