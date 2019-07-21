@@ -122,6 +122,7 @@ function getAllRegions(){
 }
 
 function getUsersPosts(user_id) {
+   console.log('in user posts' + user_id)
    let query = "select t.topic_name, r.region_name from topic t join region r on t.region = r.region_id where t.creator_id = $1"
    let values = [user_id]
    return client.query(query, values)
