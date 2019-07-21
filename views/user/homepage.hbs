@@ -33,10 +33,11 @@
          {{/if}}
       </div>
       <div class="yours">
+         <h2>Your Topics</h2>
          {{#if user_posts}}
             {{#listTopics user_posts}}
             <div class="myPosts">
-               <h2>{{topic_name}}</h2>
+               <h4>{{topic_name}}</h4>
                <span style="float:right">{{region_name}}</span>
             </div>
             {{/listTopics}}
