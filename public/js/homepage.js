@@ -27,8 +27,8 @@ function postNewTopic(){
    })
    .then(myJson => {
       console.log("in the /topics fetch .then: " + myJson)
-      document.getElementById('myPosts').innerText = `<div> <h4>${myJson[0].topic_name}</h4> 
-                                                      <p>${myJson[0].region_name}</p></div>`
+      document.getElementById('myPosts').innerHTML = `<div><h4>${myJson[0].topic_name}</h4> 
+                                                      <p>${myJson[0].region}</p></div>`
    })
 }
 
