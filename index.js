@@ -109,11 +109,11 @@ app.get('/homepage', (req, res) => {
       .then(topics => {
          database.getUserRegions(req.user.username)
          .then(regions => {
-            console.log('this is after getuseregions: ', regions);
+            console.log('this is after getuseregions: ', regions[0]);
             if(topics){
+               console.log("after the if statement in homepage route ", topics)
                database.getUsersPosts(req.user.user_id)
                   .then(user_posts => {
-                     console.log("after getting user posts: ", {region: regions[0].region_one, topic: topics[0].topic_name, post: user_posts[0].topic_name})
                      res.render('user/homepage', {
                         myTopics : topics,
                         regions : regions,
@@ -121,6 +121,7 @@ app.get('/homepage', (req, res) => {
                      })
                   })
             } else {
+               console.log('after the else statement')
                //this is a new user, so pass info for the newUser partial
                database.getAllRegions()
                   .then(data => {
