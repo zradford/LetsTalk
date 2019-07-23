@@ -85,6 +85,8 @@ function getUserData(username) {
    let query = "SELECT t.topic_name, t.description, r.region_name FROM topic t INNER JOIN users u ON t.region = u.region_one OR t.region = u.region_two OR t.region = u.region_three INNER JOIN region r on t.region = r.region_id WHERE u.username = $1"
    let values = [username]
    return client.query(query, values)
+      .then(res => res.rows)
+      .catch(e => console.error(e))
       // .then(res => {
       //    return new Promise((resolve, reject) => {
       //       if(res.rowCount == 0) {
@@ -103,28 +105,38 @@ function newTopic(user_id, name, desc, region) {
    let query = "INSERT INTO topic VALUES(DEFAULT, $1, $2, $3, $4) RETURNING *"
    let values = [user_id, name, desc, region]
    return client.query(query, values)
+      .then(res => res.rows)
+      .catch(e => console.error(e))
 }
 
 function getUserRegions(username) {
    let query = "SELECT r.region_id, r.region_name FROM region r JOIN users u ON r.region_id = u.region_one OR r.region_id = u.region_two OR r.region_id = u.region_three WHERE u.username  = $1"
    let values = [username]
    return client.query(query, values)
+      .then(res => res.rows)
+      .catch(e => console.error(e))
 }
 
 function setUserRegions(rOne, rTwo, rThree, username) {
    let query = "UPDATE users SET region_one = $1, region_two = $2, region_three = $3 WHERE username = $4;"
    let values = [rOne, rTwo, rThree, username]
    return client.query(query, values)
+      .then(res => res.rows)
+      .catch(e => console.error(e))
 }
 
 function getAllRegions(){
    return client.query("select * from region")
+      .then(res => res.rows)      
+      .catch(e => console.error(e))
 }
 
 function getUsersPosts(user_id) {
    let query = "select t.topic_name, r.region_name from topic t join region r on t.region = r.region_id where t.creator_id = $1"
    let values = [user_id]
    return client.query(query, values)
+      .then(res => res.rows)
+      .catch(e => console.error(e))
 }
 
 module.exports = {
