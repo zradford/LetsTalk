@@ -123,9 +123,9 @@ app.get('/homepage', (req, res) => {
             } else {
                //this is a new user, so pass info for the newUser partial
                database.getAllRegions()
-                  .then(regions => {
+                  .then(data => {
                      res.render('user/homepage', {
-                        regions : regions
+                        regions : data
                      })
                   })
             }
