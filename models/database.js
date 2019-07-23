@@ -110,7 +110,7 @@ function getUserRegions(username) {
    let values = [username]
    return client.query(query, values)
       .then(res => {
-         console.log("in getUserREginos" + res.rows[0].region_name)
+         console.log("in getUserREginos " + res.rows[0])
          return res.rows
       })
 }
