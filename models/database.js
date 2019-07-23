@@ -85,17 +85,17 @@ function getUserData(username) {
    let query = "SELECT t.topic_name, t.description, r.region_name FROM topic t INNER JOIN users u ON t.region = u.region_one OR t.region = u.region_two OR t.region = u.region_three INNER JOIN region r on t.region = r.region_id WHERE u.username = $1"
    let values = [username]
    return client.query(query, values)
-      .then(res => {
-         return new Promise((resolve, reject) => {
-            if(res.rowCount == 0) {
-                reject('reject') 
-            } else {
-               console.log("returning userData")
-               resolve(res.rows);
-            }
-         })
-      })
-      .catch(e => console.error(e.stack))
+      // .then(res => {
+      //    return new Promise((resolve, reject) => {
+      //       if(res.rowCount == 0) {
+      //           reject('reject') 
+      //       } else {
+      //          console.log("returning userData")
+      //          resolve(res.rows);
+      //       }
+      //    })
+      // })
+      // .catch(e => console.error(e.stack))
       // .finally(() => client.end())
 }
 
@@ -109,10 +109,6 @@ function getUserRegions(username) {
    let query = "SELECT r.region_id, r.region_name FROM region r JOIN users u ON r.region_id = u.region_one OR r.region_id = u.region_two OR r.region_id = u.region_three WHERE u.username  = $1"
    let values = [username]
    return client.query(query, values)
-      .then(res => {
-         console.log("in getUserREginos " + res.rows[0])
-         return res.rows
-      })
 }
 
 function setUserRegions(rOne, rTwo, rThree, username) {
@@ -129,10 +125,6 @@ function getUsersPosts(user_id) {
    let query = "select t.topic_name, r.region_name from topic t join region r on t.region = r.region_id where t.creator_id = $1"
    let values = [user_id]
    return client.query(query, values)
-      .then(res => {
-         console.log(res.rows[0])
-         return res.rows
-      })
 }
 
 module.exports = {
