@@ -52,6 +52,5 @@ li a:hover {
    grid-row-start: 1;
    grid-row-end: 2;
    
-   background-color: blue;
    font-size: 5vw;
 }

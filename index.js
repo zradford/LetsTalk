@@ -110,12 +110,12 @@ app.get('/homepage', (req, res) => {
          database.getUserRegions(req.user.username)
          .then(regions => {
             console.log('this is after getuseregions: ', regions[0]);
-            if(topics){ // test me
+            if(topics.rowCount > 0){ // topics.rowcount > 0
                console.log("after the if statement in homepage route ", topics)
                database.getUsersPosts(req.user.user_id)
                   .then(user_posts => {
                      res.render('user/homepage', {
-                        myTopics : topics,
+                        myTopics : topics.rows, // topics.rows
                         regions : regions,
                         user_posts : user_posts
                      })
