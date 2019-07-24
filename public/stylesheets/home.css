@@ -25,6 +25,11 @@ a {
    text-decoration: none;
 }
 
+div > a:hover {
+   color: black;
+   background-color: #4b5e4b;
+}
+
 .content {
    display: grid;
    grid-template-columns: 5vw 70vw 20vw 5vw;
