@@ -26,17 +26,20 @@ a {
 }
 
 .content {
-   display: flex;
-   flex-flow: row
+   display: grid;
+   grid-template-columns: 5vw 70vw 20vw 5vw;
+   grid-template-rows: auto 10vw;
 }
 
 .feed {
-   display: flex;
-   flex-flow: column;
-   justify-content: flex-start;
-   align-items: stretch;
-   flex-grow: 2;
-   padding: 5%;
+    display: flex;
+    flex-flow: column;
+    /* justify-content: flex-start; */
+    /* align-items: stretch; */
+    /* flex-grow: 2; */
+    /* padding: 2%; */
+    grid-column-start: 2;
+    grid-column-end: 2;
 }
 
 .topic {
@@ -54,4 +57,31 @@ a {
 
    background-color: darkolivegreen;
    padding: 10px;
+}
+
+input#newTopic {
+    margin: 5px;
+}
+
+textarea#desc {
+    margin: 5px;
+    width: 75%;
+}
+
+select#region {
+    margin: 5px;
+    height: 21px; 
+}
+
+button {
+    height: 21px;
+    float: right;
+    margin-right: 5%;
+    width: 15%;
+}
+
+.myPosts {
+    padding: 2%;
+    margin: 1%;
+    background-color: darkolivegreen;
 }
