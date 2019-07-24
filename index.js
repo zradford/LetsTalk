@@ -89,11 +89,11 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.get("/", (req, res) =>{
+app.get("/", (Request, response) =>{
    // if(req.user && ) {
    //    res.render('/homepage')
    // } else { res.render('index')}
-   res.render('index')
+   response.render('index')
 })
 
 app.get('/login', (req, res) => {
@@ -110,7 +110,7 @@ app.get('/homepage', (req, res) => {
          database.getUserRegions(req.user.username)
          .then(regions => {
             console.log('this is after getuseregions: ', regions[0]);
-            if(topics){
+            if(topics){ // test me
                console.log("after the if statement in homepage route ", topics)
                database.getUsersPosts(req.user.user_id)
                   .then(user_posts => {

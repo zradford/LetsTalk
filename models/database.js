@@ -85,7 +85,10 @@ function getUserData(username) {
    let query = "SELECT t.topic_name, t.description, r.region_name FROM topic t INNER JOIN users u ON t.region = u.region_one OR t.region = u.region_two OR t.region = u.region_three INNER JOIN region r on t.region = r.region_id WHERE u.username = $1"
    let values = [username]
    return client.query(query, values)
-      .then(res => res.rows)
+      .then(res => {
+         console.log(res.rows)
+         res.rows
+         })
       .catch(e => console.error(e))
       // .then(res => {
       //    return new Promise((resolve, reject) => {
