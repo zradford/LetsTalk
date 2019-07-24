@@ -41,16 +41,15 @@ li a:hover {
 }
 
 .Welcome-Container {
-   display: grid;
-   grid-template-columns: 10vw  auto 10vw;
-   grid-template-rows: 40vw 20vw 40vw;
+    display: grid;
+    grid-template-columns: 10vw auto 10vw;
+    grid-template-rows: 20vw 23vw 60vw;
 }
 
 .Welcome-Message {
-   grid-column-start: 2;
-   grid-column-end: 2;
-   grid-row-start: 1;
-   grid-row-end: 2;
-   
-   font-size: 5vw;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    font-size: 5vw;
 }
