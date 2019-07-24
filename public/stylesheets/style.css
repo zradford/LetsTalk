@@ -39,3 +39,18 @@ li a:hover {
    color: black;
    background-color: lightslategrey;
 }
+
+.Welcome-Container {
+   display: grid;
+   grid-template-columns: 90px auto 90px;
+   grid-template-rows: 25% 100px auto;
+}
+
+.Welcome-Message {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   grid-row-start: 1;
+   grid-row-end: 2;
+   
+   background-color: blue;
+}
