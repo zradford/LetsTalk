@@ -42,15 +42,16 @@ li a:hover {
 
 .Welcome-Container {
    display: grid;
-   grid-template-columns: 90px auto 90px;
-   grid-template-rows: 25% 100px auto;
+   grid-template-columns: 10vw  auto 10vw;
+   grid-template-rows: 40vw 20vw 40vw;
 }
 
 .Welcome-Message {
-   grid-column-start: 1;
+   grid-column-start: 2;
    grid-column-end: 2;
    grid-row-start: 1;
    grid-row-end: 2;
    
    background-color: blue;
+   font-size: 5vw;
 }
