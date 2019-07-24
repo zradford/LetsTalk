@@ -48,6 +48,10 @@ a {
 .yours {
    display: flex;
    flex-flow: column;
+
    padding: 1%;
    padding-top: 5%;
+
+   background-color: darkolivegreen;
+   padding: 10px;
 }
